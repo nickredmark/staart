@@ -1,0 +1,24 @@
+{
+  "name": "staart",
+  "version": "0.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "babel src --out-dir lib",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nicola Marcacci Rossi <nicolamr@gmail.com> (http://nmr.io)",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1"
+  },
+  "dependencies": {
+    "compose-next": "^0.6.0",
+    "ooth-client-react": "^0.6.0",
+    "prop-types": "^15.5.10",
+    "recompose": "^0.23.5"
+  }
+}
