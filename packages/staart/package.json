@@ -19,6 +19,7 @@
     "compose-next": "^0.6.0",
     "ooth-client-react": "^0.6.0",
     "prop-types": "^15.5.10",
+    "react": "^15.6.1",
     "recompose": "^0.23.5"
   }
 }
