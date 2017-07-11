@@ -10,8 +10,6 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _recompose = require('recompose');
 
-var _composeNext = require('compose-next');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = (Router, Link, Head) => (0, _recompose.withContext)({
