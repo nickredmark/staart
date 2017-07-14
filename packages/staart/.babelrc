@@ -3,7 +3,7 @@
         "react",
 		["env", {
             "targets": {
-                "node": "current"
+                "uglify": true
             }
         }]
     ]
