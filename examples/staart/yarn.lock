@@ -3953,9 +3953,9 @@ sshpk@^1.7.0:
     jsbn "~0.1.0"
     tweetnacl "~0.14.0"
 
-staart@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/staart/-/staart-0.2.0.tgz#d2617ccfc16f96778fe50dacbf869f66291df71f"
+staart@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/staart/-/staart-0.2.1.tgz#2477f1c6cc59b1b21e1ee782229b42a3a8621ffa"
   dependencies:
     compose-next "^0.8.0"
     ooth-client-react "^0.8.0"
