@@ -11,7 +11,9 @@ const nodeify = require('nodeify')
 const ooth = require('./ooth')
 
 const prepare = (o) => {
-    o._id = o._id.toString()
+    if (o && o._id) {
+        o._id = o._id.toString()
+    }
     return o
 }
 
@@ -64,8 +66,7 @@ const start = async (app, settings) => {
                 query: Query
                 mutation: Mutation
             }
-        `];        
-
+        `];
 
         const resolvers = {
             Query: {
@@ -103,16 +104,16 @@ const start = async (app, settings) => {
                         throw new Error('User not logged in.')
                     }
                     args.authorId = userId
-                    const res = await Posts.insert(args)
-                    return prepare(await Posts.findOne({_id: res.insertedIds[1]}))
+                    const _id = (await Posts.insertOne(args)).insertedId
+                    return prepare(await Posts.findOne(ObjectId(_id)))
                 },
                 createComment: async (root, args, {userId}) => {
                     if (!userId) {
                         throw new Error('User not logged in.')
                     }
                     args.authorId = userId
-                    const res = await Comments.insert(args)
-                    return prepare(await Comments.findOne({_id: res.insertedIds[1]}))
+                    const _id = (await Comments.insertOne(args)).insertedId
+                    return prepare(await Comments.findOne(ObjectId(_id)))
                 },
             },
         }
