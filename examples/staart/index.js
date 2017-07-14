@@ -3,13 +3,15 @@ const express = require('express')
 const settings = require('./settings')
 const api = require('./server/api').start
 
+const dev = process.env.NODE_ENV !== 'prod'
+
 const start = async () => {
     const app = express()
 
-    api(app, settings)
+    await api(app, settings)
 
     const nextApp = next({
-        dev: true
+        dev
     })
     const handle = nextApp.getRequestHandler()
 

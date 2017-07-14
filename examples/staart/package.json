@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node --harmony-async-await index.js",
     "build": "next build",
-    "start": "next start",
+    "start": "export NODE_ENV=prod && node --harmony-async-await index.js",
+    "linked-modules": "find node_modules/ -maxdepth 1 -type l -ls | grep -o -E \"[^/]+$\"",
+    "save-linked-modules": "npm run -s linked-modules > .linked_modules",
+    "link-modules": "cat .linked_modules | xargs yarn link",
     "docker:build": "docker build -t staart .",
     "docker:clean": "docker rm -f staart || true",
     "docker:run": "docker run -p 7879:3000 -d --name staart staart && npm run docker:logs",
@@ -19,7 +22,7 @@
   "author": "Nicola Marcacci Rossi <nicolamr@gmail.com> (http://nmr.io)",
   "license": "ISC",
   "dependencies": {
-    "compose-next": "^0.7.0",
+    "compose-next": "^0.8.0",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.3",
     "graphql": "^0.10.3",
@@ -27,14 +30,15 @@
     "graphql-tools": "^1.1.0",
     "mailcomposer": "^4.0.2",
     "mailgun-js": "^0.11.2",
-    "next": "^3.0.1-beta.8",
-    "ooth": "^0.7.0",
-    "ooth-client": "^0.7.0",
-    "ooth-client-react": "^0.6.0",
-    "ooth-client-react-next": "^0.7.0",
-    "ooth-local": "^0.7.0",
+    "mongodb": "^2.2.30",
+    "next": "^2.4.7",
+    "ooth": "^0.8.3",
+    "ooth-client": "^0.8.0",
+    "ooth-client-react": "^0.8.0",
+    "ooth-client-react-next": "^0.8.0",
+    "ooth-local": "^0.8.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "staart": "^0.1.1"
+    "staart": "^0.2.0"
   }
 }
