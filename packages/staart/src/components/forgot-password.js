@@ -26,21 +26,20 @@ class ForgotPasswordFormComponent extends Component {
         if (this.state.sent) {
             return <p>A password reset email has been sent.</p>
         } else {
-            return <form onSubmit={async e => {
-                try {
-                    e.preventDefault()
-                    const username = this.username.value;
-                    const response = await this.props.oothClient.method('local', 'forgot-password', {
-                        username
-                    })
+            return <form onSubmit={e => {
+                e.preventDefault()
+                const username = this.username.value;
+                this.props.oothClient.method('local', 'forgot-password', {
+                    username
+                }).then(() => {
                     this.setState({
                         sent: true
                     })
-                } catch (e) {
+                }).catch(e => {
                     this.setState({
                         error: e.message
                     })
-                }
+                })
             }}>
                 {this.state.error &&
                     <div className="alert alert-danger" role="alert">

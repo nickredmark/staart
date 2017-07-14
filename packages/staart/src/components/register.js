@@ -50,17 +50,15 @@ class RegisterFormComponent extends Component {
                 e.preventDefault()
                 const email = this.email.value,
                     password = this.password.value;
-
-                (async () => {
-                    const response = await this.props.oothClient.method('local', 'register', {
-                        email,
-                        password
-                    });
+                this.props.oothClient.method('local', 'register', {
+                    email,
+                    password
+                }).then(() => {
                     const authResponse = this.props.oothClient.authenticate('local', 'login', {
                         username: email,
                         password
                     })
-                })();
+                })
             }}>
                 <div className="form-group">
                     <label htmlFor="email">Email</label>

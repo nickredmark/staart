@@ -53,20 +53,18 @@ class LoginFormComponent extends Component {
         if (this.props.user) {
             return <p>You are logged in.</p>
         } else {
-            return <form onSubmit={async e => {
-                try {
-                    e.preventDefault()
-                    const username = this.username.value,
-                        password = this.password.value,
-                        response = await this.props.oothClient.authenticate('local', 'login', {
-                            username,
-                            password
-                        });
-                } catch (e) {
+            return <form onSubmit={e => {
+                e.preventDefault()
+                const username = this.username.value,
+                    password = this.password.value;
+                this.props.oothClient.authenticate('local', 'login', {
+                    username,
+                    password
+                }).catch(e => {
                     this.setState({
                         error: e.message
                     })
-                }
+                })
             }}>
                 {this.state.error &&
                     <div className="alert alert-danger" role="alert">

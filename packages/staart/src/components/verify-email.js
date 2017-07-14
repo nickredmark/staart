@@ -23,21 +23,17 @@ class VerifyEmailComponent extends Component {
             console.error('No token specified.')
             return
         }
-        (async () => {
-            const result = await this.props.oothClient.method('local', 'verify', {
-                token: this.props.token
-            })
-            if (result.status === 'error') {
-                console.error(result.message)
-                this.setState({
-                    error: result.message
-                })
-                return
-            }
+        this.props.oothClient.method('local', 'verify', {
+            token: this.props.token
+        }).then(() => {
             this.setState({
                 verified: true
             })
-        })()
+        }).catch(e => {
+            this.setState({
+                error: e.message
+            })
+        })
     }
     render() {
         if (!this.props.token) {

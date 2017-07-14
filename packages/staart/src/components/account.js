@@ -58,11 +58,13 @@ class EmailComponent extends Component {
             {this.state.sent ?
                 <p>Verification email sent.</p>
             :
-                !user.local.verified && <button onClick={async () => {
-                    await this.props.oothClient.method('local', 'generate-verification-token')
-                    this.setState({
-                        sent: true
-                    })
+                !user.local.verified && <button onClick={() => {
+                    this.props.oothClient.method('local', 'generate-verification-token')
+                        .then(() => {
+                            this.setState({
+                                sent: true
+                            })
+                        })
                 }} className="btn btn-default">Send verification email</button>
             }
         </div>
@@ -94,28 +96,21 @@ class UsernameFormComponent extends Component {
                 }
                 <form onSubmit={e => {
                     e.preventDefault();
-                    (async () => {
-                        try {
-                            const username = this.username.value
-                            if (!username) {
-                                return
-                            }
-                            const response = await this.props.oothClient.method('local', 'set-username', {
-                                username
-                            })
-                            if (response.status == 'error') {
-                                console.error(response.message)
-                                return
-                            }
-                            this.setState({
-                                sent: true
-                            })
-                        } catch (e) {
-                            this.setState({
-                                error: e.message
-                            })
-                        }
-                    })()
+                    const username = this.username.value
+                    if (!username) {
+                        return
+                    }
+                    this.props.oothClient.method('local', 'set-username', {
+                        username
+                    }).then(() => {
+                        this.setState({
+                            sent: true
+                        })
+                    }).catch(e => {
+                        this.setState({
+                            error: e.message
+                        })
+                    })
                 }}>
                     {this.state.error &&
                         <div className="alert alert-danger" role="alert">
@@ -160,33 +155,28 @@ class ChangePasswordFormComponent extends Component {
             return <p>Password updated</p>
         } else {
             return <form onSubmit={e => {
-                (async () => {
-                    try {
-                        e.preventDefault()
-                        const password = this.password.value;
-                        const newPassword = this.newPassword.value;
-                        const newPassword2 = this.newPassword2.value;
-                        if (newPassword !== newPassword2) {
-                            throw new Error('Passwords don\'t match.')
-                        }
-                        const response = await this.props.oothClient.method('local', 'change-password', {
-                            token: this.props.token,
-                            password,
-                            newPassword
-                        })
-                        if (response.status === 'error') {
-                            console.error(response.message)
-                            return;
-                        }
-                        this.setState({
-                            sent: true
-                        })
-                    } catch (e) {
-                        this.setState({
-                            error: e.message
-                        })
-                    }
-                })()
+                e.preventDefault()
+                const password = this.password.value;
+                const newPassword = this.newPassword.value;
+                const newPassword2 = this.newPassword2.value;
+                if (newPassword !== newPassword2) {
+                    return this.setState({
+                        error: 'Passwords don\'t match.'
+                    })
+                }
+                this.props.oothClient.method('local', 'change-password', {
+                    token: this.props.token,
+                    password,
+                    newPassword
+                }).then(() => {
+                    this.setState({
+                        sent: true
+                    })
+                }).catch(e => {
+                    this.setState({
+                        error: e.message
+                    })
+                })
             }}>
                 {this.state.error &&
                     <div className="alert alert-danger" role="alert">

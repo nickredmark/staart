@@ -33,19 +33,14 @@ class ResetPasswordFormComponent extends Component {
                         console.error('Passwords don\'t match.')
                         return
                     }
-                    (async () => {
-                        const response = await this.props.oothClient.method('local', 'reset-password', {
-                            token: this.props.token,
-                            newPassword: password
-                        })
-                        if (response.status === 'error') {
-                            console.error(response.message)
-                            return;
-                        }
+                    this.props.oothClient.method('local', 'reset-password', {
+                        token: this.props.token,
+                        newPassword: password
+                    }).then(() => {
                         this.setState({
                             sent: true
                         })
-                    })()
+                    })
                 }}>
                     <div className="form-group">
                         <label htmlFor="password">New Password</label>
