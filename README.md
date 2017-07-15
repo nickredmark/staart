@@ -2,6 +2,8 @@
 
 Staart is a library of components to get a node platform with user accounts quickly started.
 
+Read the introductory article [Staart - a starter library for node.js projects with user accounts](https://medium.com/@nmaro/staart-a-starter-library-for-node-js-projects-with-user-accounts-d1328b46a59).
+
 ## Boilerplate and live example
 
 You can find a minimal boilerplate to get started here: [examples/staart](examples/staart).
