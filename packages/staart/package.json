@@ -17,7 +17,6 @@
     "babel-preset-react": "^6.24.1"
   },
   "dependencies": {
-    "compose-next": "^0.8.0",
     "ooth-client-react": "^0.8.0",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
