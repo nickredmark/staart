@@ -22,9 +22,10 @@
   "author": "Nicola Marcacci Rossi <nicolamr@gmail.com> (http://nmr.io)",
   "license": "ISC",
   "dependencies": {
-    "compose-next": "^0.8.0",
+    "compose-next": "^0.8.4",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.3",
+    "express": "^4.15.3",
     "graphql": "^0.10.3",
     "graphql-server-express": "^1.0.0",
     "graphql-tools": "^1.1.0",
@@ -32,13 +33,13 @@
     "mailgun-js": "^0.11.2",
     "mongodb": "^2.2.30",
     "next": "^2.4.7",
-    "ooth": "^0.8.3",
+    "ooth": "^0.8.4",
     "ooth-client": "^0.8.0",
     "ooth-client-react": "^0.8.0",
-    "ooth-client-react-next": "^0.8.0",
-    "ooth-local": "^0.8.3",
+    "ooth-client-react-next": "^0.8.4",
+    "ooth-local": "^0.8.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "staart": "^0.2.1"
+    "staart": "^0.2.2"
   }
 }
