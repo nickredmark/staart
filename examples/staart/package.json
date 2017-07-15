@@ -13,7 +13,7 @@
     "link-modules": "cat .linked_modules | xargs yarn link",
     "docker:build": "docker build -t staart .",
     "docker:clean": "docker rm -f staart || true",
-    "docker:run": "docker run -p 7879:3000 -d --name staart staart && npm run docker:logs",
+    "docker:run": "docker run -p 7880:3000 -d --link mongo:mongo --name staart staart && npm run docker:logs",
     "docker:stop": "docker stop staart",
     "docker:start": "docker start staart && npm run docker:logs",
     "docker:logs": "docker logs -f staart",
