@@ -51,7 +51,7 @@ class LoginFormComponent extends Component {
     }
     render() {
         if (this.props.user) {
-            return <p>You are logged in.</p>
+            return <p>You are logged in. Click <a href={this.props.next || '/dashboard'}>here</a> if you don't get redirected.</p>
         } else {
             return <form onSubmit={e => {
                 e.preventDefault()
@@ -60,7 +60,8 @@ class LoginFormComponent extends Component {
                 this.props.oothClient.authenticate('local', 'login', {
                     username,
                     password
-                }).catch(e => {
+                })
+                .catch(e => {
                     this.setState({
                         error: e.message
                     })

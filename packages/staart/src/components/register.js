@@ -50,7 +50,7 @@ class RegisterFormComponent extends Component {
     }
     render() {
         if (this.props.user) {
-            return <p>You are logged in.</p>
+            return <p>You are logged in. Click <a href={this.props.next || '/dashboard'}>here</a> if don't get redirected.</p>
         } else {
             return <form onSubmit={e => {
                 e.preventDefault()
