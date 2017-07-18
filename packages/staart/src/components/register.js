@@ -32,6 +32,12 @@ export default ({next}) => (
 )
 
 class RegisterFormComponent extends Component {
+    constructor() {
+        super()
+        this.state = {
+            error: null
+        }
+    }
     componentDidMount() {
         if (this.props.user) {
             this.props.Router.push(this.props.next || '/dashboard')
@@ -58,8 +64,17 @@ class RegisterFormComponent extends Component {
                         username: email,
                         password
                     })
+                }).catch(e => {
+                    this.setState({
+                        error: e.message
+                    })
                 })
             }}>
+                {this.state.error &&
+                    <div className="alert alert-danger" role="alert">
+                        {this.state.error}
+                    </div>
+                }
                 <div className="form-group">
                     <label htmlFor="email">Email</label>
                     <input
