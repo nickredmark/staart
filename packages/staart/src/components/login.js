@@ -103,7 +103,7 @@ class LoginFormComponent extends Component {
         }
     }
 }
-const LoginForm = compose(
+export const LoginForm = compose(
     withRouter,
     withOoth,
     withUser

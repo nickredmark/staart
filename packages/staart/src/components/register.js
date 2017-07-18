@@ -106,7 +106,7 @@ class RegisterFormComponent extends Component {
         }
     }
 }
-const RegisterForm = compose(
+export const RegisterForm = compose(
     withRouter,
     withOoth,
     withUser
