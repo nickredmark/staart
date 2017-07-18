@@ -7,7 +7,7 @@ import withLink from '../hocs/link'
 const StatelessLayout = ({title, children, page, user, toggled, setToggled, siteName, menu, userMenu, footerMessage, Head, Link}) => (
     <div>
         <Head>
-            <title>Get Staarted!</title>
+            <title>{title}</title>
             <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' />
         </Head>
         <div style={{
