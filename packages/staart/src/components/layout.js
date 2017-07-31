@@ -9,6 +9,7 @@ const StatelessLayout = ({title, children, page, user, toggled, setToggled, site
         <Head>
             <title>{title}</title>
             <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' />
+            <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         </Head>
         <div style={{
             paddingTop: '50px',
