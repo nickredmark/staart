@@ -85,6 +85,7 @@ class UsernameFormComponent extends Component {
                         message
                     });
                 }).catch(({message}) => {
+                    console.log(arguments)
                     this.setState({
                         state: 'error',
                         message

@@ -6,24 +6,28 @@ const api = require('./server/api').start
 const dev = process.env.NODE_ENV !== 'prod'
 
 const start = async () => {
-    const app = express()
+    try {
+        const app = express()
 
-    await api(app, settings)
+        await api(app, settings)
 
-    const nextApp = next({
-        dev
-    })
-    const handle = nextApp.getRequestHandler()
+        const nextApp = next({
+            dev
+        })
+        const handle = nextApp.getRequestHandler()
 
-    await nextApp.prepare()
+        await nextApp.prepare()
 
-    app.get('*', (req, res) => {
-        return handle(req, res)
-    })
+        app.get('*', (req, res) => {
+            return handle(req, res)
+        })
 
-    await app.listen(settings.port)
+        await app.listen(settings.port)
 
-    console.log(`Online at ${settings.url}:${settings.port}`)
+        console.log(`Online at ${settings.url}:${settings.port}`)
+    } catch (e) {
+        console.error(e)
+    }
 }
 
 start()
