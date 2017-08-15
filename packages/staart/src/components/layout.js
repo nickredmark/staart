@@ -54,7 +54,7 @@ const StatelessLayout = ({title, children, page, user, toggled, setToggled, site
                             }
                             {user &&
                                 <Dropdown page={page} userMenu={userMenu}>
-                                    Hello, {user.local.username || user.local.email}
+                                    Hello, {user.local ? (user.local.username || user.local.email) : (user.facebook && user.facebook.email)}
                                 </Dropdown>
                             }
                         </ul>
