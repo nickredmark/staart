@@ -3149,16 +3149,16 @@ ooth-client@^0.9.4:
     isomorphic-fetch "^2.2.1"
     rx "^4.1.0"
 
-ooth-facebook@^0.12.0:
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/ooth-facebook/-/ooth-facebook-0.12.0.tgz#b463a8f306d8388fc7ce37ef7013dd1e2d5b1c93"
+ooth-facebook@^0.12.1:
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/ooth-facebook/-/ooth-facebook-0.12.1.tgz#2102762335f052abfd186cdce9224640f3045c06"
   dependencies:
     nodeify "^1.0.1"
     passport-facebook-token "^3.3.0"
 
-ooth-google@^0.12.0:
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/ooth-google/-/ooth-google-0.12.0.tgz#a6c2bc01229937e1ba8e60fc0a5f3f0fa372f3d0"
+ooth-google@^0.12.1:
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/ooth-google/-/ooth-google-0.12.1.tgz#ff29b17c3db2bd0ace3e1f3e5424039964ff4c91"
   dependencies:
     nodeify "^1.0.1"
     passport-google-id-token "^0.4.2"
