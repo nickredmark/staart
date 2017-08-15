@@ -1,8 +1,10 @@
-import withOothNext from './ooth'
-import withNext from './next'
+import provideOothNext from './ooth'
+import provideNext from './next'
+import provideSettings from './settings'
 import {compose} from 'recompose'
 
 export default compose(
-    withOothNext,
-    withNext
+    provideOothNext,
+    provideNext,
+    provideSettings
 )

@@ -13,7 +13,7 @@
     "link-modules": "cat .linked_modules | xargs yarn link",
     "docker:build": "docker build -t staart .",
     "docker:clean": "docker rm -f staart || true",
-    "docker:run": "docker run -p 7880:3000 -d --link mongo:mongo --name staart staart && npm run docker:logs",
+    "docker:run": "docker run -p 7880:3000 -d --link staart-mongo:mongo --name staart staart && npm run docker:logs",
     "docker:stop": "docker stop staart",
     "docker:start": "docker start staart && npm run docker:logs",
     "docker:logs": "docker logs -f staart",
@@ -32,14 +32,16 @@
     "mailcomposer": "^4.0.2",
     "mailgun-js": "^0.11.2",
     "mongodb": "^2.2.30",
-    "next": "2.4.7",
-    "ooth": "^0.10.2",
+    "next": "^3.0.3",
+    "ooth": "^0.12.0",
     "ooth-client": "^0.9.4",
     "ooth-client-react": "^0.8.0",
     "ooth-client-react-next": "^0.9.4",
-    "ooth-local": "^0.10.2",
+    "ooth-facebook": "^0.12.0",
+    "ooth-google": "^0.12.0",
+    "ooth-local": "^0.12.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "staart": "^0.4.3"
+    "staart": "^0.5.0"
   }
 }

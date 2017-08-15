@@ -1,8 +1,8 @@
 const express = require('express')
 const Ooth = require('ooth')
 const oothLocal = require('ooth-local')
-//const oothFacebook = require('ooth-facebook')
-//const oothGoogle = require('ooth-google')
+const oothFacebook = require('ooth-facebook')
+const oothGoogle = require('ooth-google')
 const mail = require('./mail')
 
 module.exports = async function start(app, settings) {
@@ -80,8 +80,8 @@ module.exports = async function start(app, settings) {
         }
     }))
 
-    //ooth.use('facebook', oothFacebook(settings.facebook))
+    ooth.use('facebook', oothFacebook(settings.facebook))
 
-    //ooth.use('google', oothGoogle(settings.google))
+    ooth.use('google', oothGoogle(settings.google))
 
 }

@@ -12,5 +12,13 @@ module.exports = {
     },
     mail: {
         from: "info@example.com"
-    }    
+    },
+    facebook: {
+        clientID: 'XXX',
+        clientSecret: 'XXX',
+    },
+    google: {
+        clientID: 'XXX',
+        clientSecret: 'XXX',
+    },
 }
