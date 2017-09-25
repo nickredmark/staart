@@ -1,5 +1,7 @@
 # Staart - get your project started
 
+Join the [Slack channel](https://join.slack.com/t/ooth/shared_invite/enQtMjQ3MDE2ODA2NjE0LTE1NGNmN2YzZTdiMWNjODExZmNjYzg3ZGJjZmVmZmI2YjVhOWYzZDQ1NWI4Y2JiNzNlMmI2Y2U5ZWFhODIzMWQ)!
+
 Staart is a library of components to get a node platform with user accounts quickly started.
 
 Read the introductory article [Staart - a starter library for node.js projects with user accounts](https://medium.com/@nmaro/staart-a-starter-library-for-node-js-projects-with-user-accounts-d1328b46a59).
