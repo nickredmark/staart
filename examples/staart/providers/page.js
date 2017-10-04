@@ -6,5 +6,5 @@ import {compose} from 'recompose'
 export default compose(
     provideOothNext,
     provideNext,
-    provideSettings
+    provideSettings,
 )

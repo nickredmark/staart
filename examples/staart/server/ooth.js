@@ -42,6 +42,15 @@ module.exports = async function start(app, settings) {
                 html: `Please verify your email by opening the following url: /verify-email?token=${verificationToken}.`,
             })
         },
+        onSetEmail({email, verificationToken}) {
+            sendMail({
+                from: settings.mail.from,
+                to: email,
+                subject: 'Verify your email address',
+                body: `Please verify your email by opening the following url: /verify-email?token=${verificationToken}.`,
+                html: `Please verify your email by opening the following url: /verify-email?token=${verificationToken}.`,
+            })
+        },
         onVerify({email}) {
             sendMail({
                 from: settings.mail.from,
