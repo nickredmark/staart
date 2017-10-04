@@ -175,7 +175,8 @@ class PasswordComponent extends Component {
                     const newPassword2 = this.newPassword2.value;
                     if (newPassword !== newPassword2) {
                         return this.setState({
-                            error: 'Passwords don\'t match.'
+                            state: 'error',
+                            message: 'Passwords don\'t match.'
                         })
                     }
                     this.props.oothClient.method('local', 'change-password', {
