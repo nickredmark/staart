@@ -1,24 +1,14 @@
 import React, {Component} from 'react'
 import {withUser, withOoth} from 'ooth-client-react'
 import {compose} from 'recompose'
+import Form from './form'
 
 class LocalComponent extends Component {
     render() {
         return <div>
             <Username/>
-            {this.props.user.local ?
-                <div>
-                    <h2>Email</h2>
-                    <Email/>
-                    <h2>Password</h2>
-                    <ChangePasswordForm/>
-                </div>
-            :
-                <div>
-                    <h2>Email</h2>
-                    <p>No login email set.</p>
-                </div>
-            }
+            <Email/>
+            <Password/>
         </div>
     }
 }
@@ -39,9 +29,46 @@ class EmailComponent extends Component {
         const user = this.props.user
         const {email, verified} = user.local || {}
         return <div>
-            {email ?
+            <h2>Email</h2>
+            <Form
+                onSubmit={() => {
+                    const email = this.email.value
+                    this.props.oothClient.method('local', 'set-email', {
+                        email
+                    }).then(({message}) => {
+                        this.setState({
+                            state: 'success',
+                            message
+                        })
+                    }).catch(({message}) => {
+                        this.setState({
+                            state:'error',
+                            message
+                        })
+                    })
+                }}
+                state={this.state.state}
+                message={this.state.message}
+                submitLabel={email ? 'Change email' : 'Set email'}
+            >
+                <div className="form-group">
+                    <label htmlFor="email">Email</label>
+                    <input
+                        type="email"
+                        className="form-control"
+                        id="email"
+                        placeholder="mail@example.com"
+                        defaultValue={email}
+                        ref={email => {
+                            this.email = email
+                        }}
+                    />
+                </div>
+            </Form>
+            {email &&
                 <div>
-                    <p>Your login email is <b>{email}</b> ({verified ? 'verified' : 'not verified'}).</p>
+                    <h3>Email verification</h3>
+                    <p>{verified ? 'Verified' : 'Not verified'}.</p>
                     {this.state.sent ?
                         <p>Verification email sent.</p>
                     :
@@ -54,10 +81,6 @@ class EmailComponent extends Component {
                                 })
                         }} className="btn btn-default">Send verification email</button>
                     }
-                </div>
-            :
-                <div>
-                    No login email set up.
                 </div>
             }
         </div>
@@ -94,7 +117,6 @@ class UsernameFormComponent extends Component {
                         message
                     });
                 }).catch(({message}) => {
-                    console.log(arguments)
                     this.setState({
                         state: 'error',
                         message
@@ -136,49 +158,51 @@ const Username = compose(
     withUser
 )(UsernameFormComponent)
 
-class ChangePasswordFormComponent extends Component {
+class PasswordComponent extends Component {
     constructor() {
         super()
         this.state = {
-            sent: false,
             error: false
         }
     }
     render() {
-        if (this.state.sent) {
-            return <p>Password updated</p>
-        } else {
-            return <form onSubmit={e => {
-                e.preventDefault()
-                const password = this.password.value;
-                const newPassword = this.newPassword.value;
-                const newPassword2 = this.newPassword2.value;
-                if (newPassword !== newPassword2) {
-                    return this.setState({
-                        error: 'Passwords don\'t match.'
+        return <div>
+            <h2>Password</h2>
+            <Form
+                onSubmit={() => {
+                    const password = this.password.value;
+                    const newPassword = this.newPassword.value;
+                    const newPassword2 = this.newPassword2.value;
+                    if (newPassword !== newPassword2) {
+                        return this.setState({
+                            error: 'Passwords don\'t match.'
+                        })
+                    }
+                    this.props.oothClient.method('local', 'change-password', {
+                        token: this.props.token,
+                        password,
+                        newPassword
+                    }).then((res) => {
+                        this.password.value = ''
+                        this.newPassword.value = ''
+                        this.newPassword2.value = ''
+                        this.setState({
+                            state: 'success',
+                            message: res.message,
+                        })
+                    }).catch(e => {
+                        this.setState({
+                            state: 'error',
+                            message: e.message
+                        })
                     })
-                }
-                this.props.oothClient.method('local', 'change-password', {
-                    token: this.props.token,
-                    password,
-                    newPassword
-                }).then(() => {
-                    this.setState({
-                        sent: true
-                    })
-                }).catch(e => {
-                    this.setState({
-                        error: e.message
-                    })
-                })
-            }}>
-                {this.state.error &&
-                    <div className="alert alert-danger" role="alert">
-                        {this.state.error}
-                    </div>
-                }
+                }}
+                state={this.state.state}
+                message={this.state.message}
+                submitLabel="Change password"
+            >
                 <div className="form-group">
-                    <label htmlFor="password">Old Password</label>
+                    <label htmlFor="password">Old Password (if any)</label>
                     <input
                         type="password"
                         className="form-control"
@@ -213,11 +237,8 @@ class ChangePasswordFormComponent extends Component {
                         }}
                     />
                 </div>
-                <div className="form-group">
-                    <button type="submit" className="btn btn-primary btn-block">Change password</button>
-                </div>
-            </form>        
-        }
+            </Form>
+        </div>
     }
 }
-const ChangePasswordForm = withOoth(ChangePasswordFormComponent)
+const Password = withOoth(PasswordComponent)

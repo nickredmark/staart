@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {withUser, withOoth} from 'ooth-client-react'
 import {compose} from 'recompose'
+import ConnectFacebook from './login-facebook'
 
 class FacebookComponent extends Component {
     render() {
@@ -12,7 +13,10 @@ class FacebookComponent extends Component {
                     <p>Facebook email: {this.props.user.facebook.email}</p>
                 </div>
             :
-                <p>No Facebook login set.</p>
+                <div>
+                    <p>No Facebook login set.</p>
+                    <ConnectFacebook label="Connect Facebook"/>
+                </div>
             }
         </div>
     }
