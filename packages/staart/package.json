@@ -6,21 +6,25 @@
   "scripts": {
     "link": "npm run prepublish && yarn link",
     "prepublish": "npm run build",
-    "build": "babel src --out-dir lib",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src --out-dir lib --ignore '**/*.test.js'",
+    "test": "jest"
   },
   "author": "Nicola Marcacci Rossi <nicolamr@gmail.com> (http://nmr.io)",
   "license": "ISC",
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-react": "^6.24.1"
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "jest": "^21.2.1",
+    "ooth-client": "^0.9.4",
+    "ooth-client-react-next": "^0.9.4",
+    "react-test-renderer": "^16.1.1"
   },
   "dependencies": {
     "ooth-client-react": "^0.8.0",
-    "prop-types": "^15.5.10",
-    "react": "^15.6.1",
-    "recompose": "^0.23.5",
+    "prop-types": "^15.6.0",
+    "react": "^16.1.1",
+    "recompose": "^0.26.0",
     "scriptjs": "^2.5.8"
   }
 }

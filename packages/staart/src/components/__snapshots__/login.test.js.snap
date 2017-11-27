@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Login /> renders 1`] = `
+<div
+  style={
+    Object {
+      "margin": "auto",
+      "maxWidth": "300px",
+    }
+  }
+>
+  <h1>
+    Log in
+  </h1>
+  <form
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="username"
+      >
+        Username or Email
+      </label>
+      <input
+        className="form-control"
+        id="username"
+        placeholder="Username"
+        type="string"
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="password"
+      >
+        Password
+      </label>
+      <input
+        className="form-control"
+        id="password"
+        placeholder="******"
+        type="password"
+      />
+      <a
+        href="/forgot-password"
+      >
+        Forgot your password?
+      </a>
+    </div>
+    <div
+      className="form-group"
+    >
+      <button
+        className="btn btn-primary btn-block"
+        type="submit"
+      >
+        Log in
+      </button>
+    </div>
+  </form>
+  <p
+    style={
+      Object {
+        "textAlign": "center",
+      }
+    }
+  >
+    or
+  </p>
+  <p>
+    New user? 
+    <a
+      href="/register"
+    >
+      register
+    </a>
+    .
+  </p>
+</div>
+`;
