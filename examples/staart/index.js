@@ -10,7 +10,7 @@ const start = async () => {
         const app = express()
 
         await api(app, settings)
-
+        
         const nextApp = next({
             dev
         })

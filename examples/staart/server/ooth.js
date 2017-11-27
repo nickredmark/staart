@@ -4,20 +4,23 @@ const oothLocal = require('ooth-local')
 const oothFacebook = require('ooth-facebook')
 const oothGoogle = require('ooth-google')
 const mail = require('./mail')
+const {MongoClient, ObjectId} = require('mongodb')
+const OothMongo = require('ooth-mongo')
 
 module.exports = async function start(app, settings) {
 
     const ooth = new Ooth({
-        mongoUrl: settings.mongoUrl,
         sharedSecret: settings.sharedSecret,
         path: settings.oothPath,
     })
+    const db = await MongoClient.connect(settings.mongoUrl)
+    const oothMongo = new OothMongo(db, ObjectId)
 
-    await ooth.start(app)
+    await ooth.start(app, oothMongo)
 
     const sendMail = mail(settings.mailgun)
     ooth.use('local', oothLocal({
-        onRegister({email, verificationToken}) {
+        onRegister({email, verificationToken, _id}) {
             sendMail({
                 from: settings.mail.from,
                 to: email,
@@ -29,26 +32,26 @@ module.exports = async function start(app, settings) {
                 from: settings.mail.from,
                 to: email,
                 subject: 'Verify your email address',
-                body: `Please verify your email by opening the following url: /verify-email?token=${verificationToken}.`,
-                html: `Please verify your email by opening the following url: /verify-email?token=${verificationToken}.`,
+                body: `Please verify your email by opening the following url: /verify-email?token=${verificationToken}&userId=${_id}.`,
+                html: `Please verify your email by opening the following url: /verify-email?token=${verificationToken}&userId=${_id}.`,
             })
         },
-        onGenerateVerificationToken({email, verificationToken}) {
+        onGenerateVerificationToken({email, verificationToken, _id}) {
             sendMail({
                 from: settings.mail.from,
                 to: email,
                 subject: 'Verify your email address',
-                body: `Please verify your email by opening the following url: /verify-email?token=${verificationToken}.`,
-                html: `Please verify your email by opening the following url: /verify-email?token=${verificationToken}.`,
+                body: `Please verify your email by opening the following url: /verify-email?token=${verificationToken}&userId=${_id}.`,
+                html: `Please verify your email by opening the following url: /verify-email?token=${verificationToken}&userId=${_id}.`,
             })
         },
-        onSetEmail({email, verificationToken}) {
+        onSetEmail({email, verificationToken, _id}) {
             sendMail({
                 from: settings.mail.from,
                 to: email,
                 subject: 'Verify your email address',
-                body: `Please verify your email by opening the following url: /verify-email?token=${verificationToken}.`,
-                html: `Please verify your email by opening the following url: /verify-email?token=${verificationToken}.`,
+                body: `Please verify your email by opening the following url: /verify-email?token=${verificationToken}&userId=${_id}.`,
+                html: `Please verify your email by opening the following url: /verify-email?token=${verificationToken}&userId=${_id}.`,
             })
         },
         onVerify({email}) {
@@ -60,13 +63,13 @@ module.exports = async function start(app, settings) {
                 html: `Your email address has been verified.`,
             })
         },
-        onForgotPassword({email, passwordResetToken}) {
+        onForgotPassword({email, passwordResetToken, _id}) {
             sendMail({
                 from: settings.mail.from,
                 to: email,
                 subject: 'Reset password',
-                body: `Reset your password on the following page: /reset-password?token=${passwordResetToken}.`,
-                html: `Reset your password on the following page: /reset-password?token=${passwordResetToken}.`,
+                body: `Reset your password on the following page: /reset-password?token=${passwordResetToken}&userId=${_id}.`,
+                html: `Reset your password on the following page: /reset-password?token=${passwordResetToken}&userId=${_id}.`,
             })
         },
         onResetPassword({email}) {

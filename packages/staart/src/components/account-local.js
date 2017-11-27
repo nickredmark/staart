@@ -180,7 +180,6 @@ class PasswordComponent extends Component {
                         })
                     }
                     this.props.oothClient.method('local', 'change-password', {
-                        token: this.props.token,
                         password,
                         newPassword
                     }).then((res) => {

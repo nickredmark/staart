@@ -24,8 +24,9 @@ function nodeifyAsync(asyncFunction) {
 }
 
 const start = async (app, settings) => {
+    let db;
     try {
-        const db = await MongoClient.connect(settings.mongoUrl)
+        db = await MongoClient.connect(settings.mongoUrl)
 
         const Posts = db.collection('posts')
         const Comments = db.collection('comments')
@@ -151,9 +152,11 @@ const start = async (app, settings) => {
         app.use('/graphiql', graphiqlExpress({
             endpointURL: '/graphql',
         }))
-
     } catch (e) {
-        console.log(e)
+        if (db) {
+            db.close();
+        }
+        throw e;
     }
 }
 

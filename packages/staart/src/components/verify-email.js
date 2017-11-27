@@ -1,13 +1,13 @@
 import React, {Component} from 'react'
 import {withOoth} from 'ooth-client-react'
 
-export default ({token}) => (
+export default ({token, userId}) => (
         <div style={{
             maxWidth: '300px',
             margin: 'auto'
         }}>
             <h1>Verify email</h1>
-            <VerifyEmail token={token}/>
+            <VerifyEmail token={token} userId={userId}/>
         </div>
 )
 
@@ -23,8 +23,12 @@ class VerifyEmailComponent extends Component {
             console.error('No token specified.')
             return
         }
+        if (!this.props.userId) {
+            console.error('No userId specified.')
+        }
         this.props.oothClient.method('local', 'verify', {
-            token: this.props.token
+            token: this.props.token,
+            userId: this.props.userId,
         }).then(() => {
             this.setState({
                 verified: true
@@ -38,6 +42,8 @@ class VerifyEmailComponent extends Component {
     render() {
         if (!this.props.token) {
             return <p>No token specified.</p>
+        } else if (!this.props.userId) {
+            return <p>No userId specified.</p>
         } else {
             if (this.state.error) {
                 return <p>{this.state.error}</p>

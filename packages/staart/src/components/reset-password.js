@@ -1,13 +1,13 @@
 import React, {Component} from 'react'
 import {withOoth} from 'ooth-client-react'
 
-export default ({token}) => (
+export default ({token, userId}) => (
         <div style={{
             maxWidth: '300px',
             margin: 'auto'
         }}>
             <h1>Reset password</h1>
-            <ResetPasswordForm token={token}/>
+            <ResetPasswordForm token={token} userId={userId}/>
         </div>
 )
 
@@ -21,6 +21,8 @@ class ResetPasswordFormComponent extends Component {
     render() {
         if (!this.props.token) {
             return <p>No token specified.</p>
+        } else if (!this.props.userId) {
+            return <p>No userId specified.</p>
         } else {
             if (this.state.sent) {
                 return <p>Your password has been reset. <a href="/login">Log in</a> with your new password.</p>
@@ -34,6 +36,7 @@ class ResetPasswordFormComponent extends Component {
                         return
                     }
                     this.props.oothClient.method('local', 'reset-password', {
+                        userId: this.props.userId,
                         token: this.props.token,
                         newPassword: password
                     }).then(() => {
