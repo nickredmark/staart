@@ -22,4 +22,3 @@ const Account = compose(
     withLoginRequired('/account')
 )(AccountComponent)
 export default Account
-

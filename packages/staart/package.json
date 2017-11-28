@@ -16,12 +16,12 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "jest": "^21.2.1",
-    "ooth-client": "^0.9.4",
-    "ooth-client-react-next": "^0.9.4",
+    "ooth-client": "^1.1.0",
+    "ooth-client-react-next": "^1.1.0",
     "react-test-renderer": "^16.1.1"
   },
   "dependencies": {
-    "ooth-client-react": "^0.8.0",
+    "ooth-client-react": "^1.1.0",
     "prop-types": "^15.6.0",
     "react": "^16.1.1",
     "recompose": "^0.26.0",

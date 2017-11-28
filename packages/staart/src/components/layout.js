@@ -32,21 +32,21 @@ const StatelessLayout = ({title, children, page, user, toggled, setToggled, site
                     <div id="navbar" className={"collapse navbar-collapse" + (toggled ? ' in' : '')}>
                         <ul className="nav navbar-nav navbar-right">
                             {menu.map(({url, name, label}) => (
-                                <li key={name} className={page === name && 'active'}>
+                                <li key={name} className={page === name ? 'active' : undefined}>
                                     <Link href={url}>
                                         <a>{label}</a>
                                     </Link>
                                 </li>
                             ))}
                             {!user &&
-                                <li className={page === 'login' && 'active'}>
+                                <li className={page === 'login' ? 'active' : undefined}>
                                     <Link href="/login">
                                         <a>Log in</a>
                                     </Link>
                                 </li>
                             }
                             {!user &&
-                                <li className={page === 'register' && 'active'}>
+                                <li className={page === 'register' ? 'active' : undefined}>
                                     <Link href="/register">
                                         <a>Register</a>
                                     </Link>
@@ -79,14 +79,14 @@ export default compose(
 )(StatelessLayout)
 
 const StatelessDropdown = ({page, children, toggled, setToggled, userMenu, Link}) => (
-    <li className={'dropdown' + (toggled && ' open')}>
+    <li className={'dropdown' + (toggled ? ' open' : undefined)}>
         <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" onClick={() => {
             setToggled(!toggled)
         }}>{children} <span className="caret"></span></a>
         {toggled &&
             <ul className="dropdown-menu">
                 {userMenu.map(({url, name, label}) => (
-                    <li key={name} className={page === 'name' && 'active'}>
+                    <li key={name} className={page === 'name' ? 'active' : null}>
                         <Link href={url}>
                             <a>{label}</a>
                         </Link>
