@@ -5,12 +5,17 @@ const menu = [
     {
         url: '/',
         name: 'home',
-        label: 'Home'
+        label: 'Home',
     },
     {
         url: '/about',
         name: 'about',
-        label: 'About'
+        label: 'About',
+    },
+    {
+        url: '/blog',
+        name: 'blog',
+        label: 'Sample Blog',
     },
 ]
 
@@ -18,18 +23,18 @@ const userMenu = [
     {
         url: '/dashboard',
         name: 'dashboard',
-        label: 'Dashboard'
+        label: 'Dashboard',
     },
     {
         url: '/account',
         name: 'account',
-        label: 'Account'
+        label: 'Account',
     },
     {
         url: '/logout',
         name: 'logout',
-        label: 'Log out'
-    }
+        label: 'Log out',
+    },
 ]
 
 const siteName = 'Staart'

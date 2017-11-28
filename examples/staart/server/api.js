@@ -83,7 +83,7 @@ const start = async (app, settings) => {
                     return prepare(await Posts.findOne(ObjectId(_id)))
                 },
                 posts: async (root, args, context) => {
-                    return (await Posts.find({}).toArray()).map(prepare)
+                    return (await Posts.find({}, {sort: { createdAt: -1}}).toArray()).map(prepare)
                 },
                 comment: async (root, {_id}) => {
                     return prepare(await Comments.findOne(ObjectId(_id)))
@@ -91,7 +91,7 @@ const start = async (app, settings) => {
             },
             Post: {
                 comments: async ({_id}) => {
-                    return (await Comments.find({postId: _id}).toArray()).map(prepare)
+                    return (await Comments.find({postId: _id}, {sort: {createdAt: 1}}).toArray()).map(prepare)
                 }
             },
             Comment: {
@@ -105,6 +105,7 @@ const start = async (app, settings) => {
                         throw new Error('User not logged in.')
                     }
                     args.authorId = userId
+                    args.createdAt = new Date()
                     const _id = (await Posts.insertOne(args)).insertedId
                     return prepare(await Posts.findOne(ObjectId(_id)))
                 },
@@ -113,6 +114,7 @@ const start = async (app, settings) => {
                         throw new Error('User not logged in.')
                     }
                     args.authorId = userId
+                    args.createdAt = new Date()
                     const _id = (await Comments.insertOne(args)).insertedId
                     return prepare(await Comments.findOne(ObjectId(_id)))
                 },
