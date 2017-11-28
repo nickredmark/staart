@@ -1,4 +1,4 @@
-FROM node:7
+FROM node:8
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
@@ -6,7 +6,7 @@ WORKDIR /usr/src/app
 COPY . .
 RUN npm install -g yarn
 RUN yarn --pure-lockfile
-RUN npm run build
+RUN yarn build
 
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["yarn", "start"]
