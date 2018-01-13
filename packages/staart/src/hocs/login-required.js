@@ -13,7 +13,7 @@ export default url => {
             }
             render() {
                 if (this.props.user) {
-                    return <C/>
+                    return <C {...this.props}/>
                 } else {
                     return <div className="container">
                         <p>You need to log in to see this page.</p>
