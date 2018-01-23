@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import withSettings from '../hocs/settings'
 import {withOoth} from 'ooth-client-react'
 import {compose} from 'recompose'
+import withI18n from '../hocs/i18n'
 
 class GoogleComponent extends Component {
     constructor() {
@@ -83,7 +84,7 @@ class GoogleComponent extends Component {
                         color: 'white'
                     }}
                 >
-                    {this.props.label ? this.props.label : 'Log in with Google'}
+                    {this.props.label ? this.props.label : this.props.__('login-google.login-with-google')}
                 </button>
                 {this.state.state === 'error' &&
                     <div className="alert alert-danger" role="alert">
@@ -98,7 +99,8 @@ class GoogleComponent extends Component {
 }
 const Google = compose(
     withOoth,
-    withSettings
+    withSettings,
+    withI18n,
 )
 (GoogleComponent)
 

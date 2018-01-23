@@ -3,8 +3,9 @@ import {compose, withState} from 'recompose'
 import React from 'react'
 import withHead from '../hocs/head'
 import withLink from '../hocs/link'
+import withI18n from '../hocs/i18n'
 
-const StatelessLayout = ({title, children, page, user, toggled, setToggled, siteName, menu, userMenu, footerMessage, Head, Link}) => (
+const StatelessLayout = ({__, title, children, page, user, toggled, setToggled, siteName, menu, userMenu, footerMessage, Head, Link}) => (
     <div>
         <Head>
             <title>{title}</title>
@@ -22,7 +23,7 @@ const StatelessLayout = ({title, children, page, user, toggled, setToggled, site
                         onClick={() => {
                             setToggled(!toggled)
                         }}>
-                            <span className="sr-only">Toggle navigation</span>
+                            <span className="sr-only">{__('layout.toggle-navigation')}</span>
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
@@ -75,7 +76,8 @@ export default compose(
     withHead,
     withLink,
     withUser,
-    withState('toggled', 'setToggled', false)
+    withI18n,
+    withState('toggled', 'setToggled', false),
 )(StatelessLayout)
 
 const StatelessDropdown = ({page, children, toggled, setToggled, userMenu, Link}) => (

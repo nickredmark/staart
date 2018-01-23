@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {withUser, withOoth} from 'ooth-client-react'
 import {compose} from 'recompose'
 import Form from './form'
+import withI18n from '../hocs/i18n'
 
 class LocalComponent extends Component {
     render() {
@@ -26,7 +27,7 @@ class EmailComponent extends Component {
         }
     }
     render() {
-        const user = this.props.user
+        const {__, user} = this.props
         const {email, verified} = user.local || {}
         return <div>
             <h2>Email</h2>
@@ -49,10 +50,10 @@ class EmailComponent extends Component {
                 }}
                 state={this.state.state}
                 message={this.state.message}
-                submitLabel={email ? 'Change email' : 'Set email'}
+                submitLabel={email ? __('account-local.email.change-email') : __('account-local.email.set-email')}
             >
                 <div className="form-group">
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="email">{__('account-local.email.email')}</label>
                     <input
                         type="email"
                         className="form-control"
@@ -67,10 +68,10 @@ class EmailComponent extends Component {
             </Form>
             {email &&
                 <div>
-                    <h3>Email verification</h3>
-                    <p>{verified ? 'Verified' : 'Not verified'}.</p>
+                    <h3>{__('account-local.email.email-verification')}</h3>
+                    <p>{verified ? __('account-local.email.verified') : __('account-local.email.not-verified')}.</p>
                     {this.state.sent ?
-                        <p>Verification email sent.</p>
+                        <p>{__('account-local.email.verification-email-sent')}</p>
                     :
                         !verified && <button onClick={() => {
                             this.props.oothClient.method('local', 'generate-verification-token')
@@ -79,7 +80,7 @@ class EmailComponent extends Component {
                                         sent: true
                                     })
                                 })
-                        }} className="btn btn-default">Send verification email</button>
+                        }} className="btn btn-default">{__('account-local.email.send-verification-email')}</button>
                     }
                 </div>
             }
@@ -88,7 +89,8 @@ class EmailComponent extends Component {
 }
 const Email = compose(
     withUser,
-    withOoth
+    withOoth,
+    withI18n,
 )(EmailComponent)
 
 class UsernameFormComponent extends Component {
@@ -100,7 +102,7 @@ class UsernameFormComponent extends Component {
         }
     }
     render() {
-        const user = this.props.user
+        const {__, user} = this.props
         const username = user.local && user.local.username
         return <div>
             <form onSubmit={e => {
@@ -134,7 +136,7 @@ class UsernameFormComponent extends Component {
                     </div>
                 }
                 <div className="form-group">
-                    <label htmlFor="username">Username</label>
+                    <label htmlFor="username">{__('account-local.username.username')}</label>
                     <input
                         type="username"
                         className="form-control"
@@ -147,7 +149,7 @@ class UsernameFormComponent extends Component {
                     />
                 </div>
                 <div className="form-group">
-                    <button type="submit" className="btn btn-primary btn-block">Set username</button>
+                    <button type="submit" className="btn btn-primary btn-block">{__('account-local.username.username')}</button>
                 </div>
             </form>
         </div>
@@ -155,7 +157,8 @@ class UsernameFormComponent extends Component {
 }
 const Username = compose(
     withOoth,
-    withUser
+    withUser,
+    withI18n,
 )(UsernameFormComponent)
 
 class PasswordComponent extends Component {
@@ -166,6 +169,8 @@ class PasswordComponent extends Component {
         }
     }
     render() {
+        const {__, oothClient} = this.props
+
         return <div>
             <h2>Password</h2>
             <Form
@@ -176,10 +181,10 @@ class PasswordComponent extends Component {
                     if (newPassword !== newPassword2) {
                         return this.setState({
                             state: 'error',
-                            message: 'Passwords don\'t match.'
+                            message: __('account-local.password.passwords-dont-match')
                         })
                     }
-                    this.props.oothClient.method('local', 'change-password', {
+                    oothClient.method('local', 'change-password', {
                         password,
                         newPassword
                     }).then((res) => {
@@ -199,10 +204,10 @@ class PasswordComponent extends Component {
                 }}
                 state={this.state.state}
                 message={this.state.message}
-                submitLabel="Change password"
+                submitLabel={__('account-local.password.change-password')}
             >
                 <div className="form-group">
-                    <label htmlFor="password">Old Password (if any)</label>
+                    <label htmlFor="password">{__('account-local.password.old-password-if-any')}</label>
                     <input
                         type="password"
                         className="form-control"
@@ -214,7 +219,7 @@ class PasswordComponent extends Component {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="newPassword">New Password</label>
+                    <label htmlFor="newPassword">{__('account-local.password.new-password')}</label>
                     <input
                         type="password"
                         className="form-control"
@@ -226,7 +231,7 @@ class PasswordComponent extends Component {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="newPassword2">Repeat the new Password</label>
+                    <label htmlFor="newPassword2">{__('account-local.password.repeat-new-password')}</label>
                     <input
                         type="password"
                         className="form-control"
@@ -241,4 +246,7 @@ class PasswordComponent extends Component {
         </div>
     }
 }
-const Password = withOoth(PasswordComponent)
+const Password = compose(
+    withOoth,
+    withI18n,
+)(PasswordComponent)

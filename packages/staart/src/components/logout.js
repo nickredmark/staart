@@ -1,6 +1,7 @@
 import {withOoth, withUser} from 'ooth-client-react'
 import React, {Component} from 'react'
 import {compose} from 'recompose'
+import withI18n from '../hocs/i18n'
 
 export default () => (
     <div className="container">
@@ -16,14 +17,16 @@ class LogoutComponent extends Component {
         }
     }
     render() {
-        if (this.props.user) {
-            return <p>Logging you out...</p>
+        const {__, user} = this.props
+        if (user) {
+            return <p>{__('logout.logging-out')}</p>
         } else {
-            return <p>Good bye!</p>
+            return <p>{__('logout.goodbye')}</p>
         }
     }
 }
 const Logout = compose(
     withOoth,
-    withUser
+    withUser,
+    withI18n,
 )(LogoutComponent)

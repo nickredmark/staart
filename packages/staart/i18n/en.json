@@ -1,0 +1,106 @@
+{
+    "account-facebook": {
+        "facebook": "Facebook",
+        "connected-with-facebook": "Connected with Facebook.",
+        "facebook-email": "Facebook email",
+        "no-facebook-login-set": "No Facebook login set.",
+        "connect-facebook": "Connect Facebook"
+    },
+    "account-google": {
+        "google": "Google",
+        "connected-with-google": "Connected with Google.",
+        "google-email": "Google email",
+        "no-google-login-set": "No Google login set.",
+        "connect-google": "Connect Google"
+    },
+    "account-local": {
+        "email": {
+            "change-email": "Change email",
+            "set-email": "Set email",
+            "email": "Email",
+            "verified": "Verified",
+            "not-verified": "Not verified",
+            "send-verification-email": "Send verification email",
+            "verification-email-sent": "Verification email sent.",
+            "email-verification": "Email verification"
+        },
+        "username": {
+            "username": "Username"
+        },
+        "password": {
+            "passwords-dont-match": "Passwords don't match.",
+            "change-password": "Change password",
+            "old-password-if-any": "Old Password (if any)",
+            "new-password": "New Password",
+            "repeat-new-password": "Repeat the new Password"
+        }
+    },
+    "account": {
+        "account": "Account"
+    },
+    "forgot-password": {
+        "forgot-password": "Forgot passwrod",
+        "back-to": "Back to",
+        "login-page": "log in page",
+        "password-reset-email-sent": "A password reset email has been sent.",
+        "username-or-email": "Username or Email",
+        "send-reset-password-email": "Send reset password email"
+    },
+    "layout": {
+        "toggle-navigation": "Toggle navigation"
+    },
+    "login-facebook": {
+        "login-with-facebook": "Log in with Facebook",
+        "register-with-facebook": "Register with Facebook"
+    },
+    "login-google": {
+        "login-with-google": "Log in with Google",
+        "register-with-google": "Register with Google"
+    },
+    "login-local": {
+        "username-or-email": "Username or Email",
+        "password": "Password",
+        "forgot-your-password": "Forgot your password?",
+        "login": "Log in"
+    },
+    "login-component": {
+        "login": "Log in",
+        "or": "or",
+        "new-user": "New user?",
+        "register": "register"
+    },
+    "logout": {
+        "logging-out": "Logging you out...",
+        "goodbye": "Good bye!"
+    },
+    "register-local": {
+        "email": "Email",
+        "password": "Password",
+        "register": "Register"
+    },
+    "register": {
+        "register-with-facebook": "Register with",
+        "register": "Register",
+        "or": "or",
+        "login": "Log in",
+        "have-account": "Already have an account?"
+    },
+    "reset-password": {
+        "reset-password": "Reset password",
+        "no-token-specified": "No token specified.",
+        "no-userid-specified": "No userId specified.",
+        "password-reset": "Your password has been reset.",
+        "login": "Log in",
+        "with-new-password": "with your new password.",
+        "passwords-dont-match": "Passwords don't match.",
+        "new-password": "New Password",
+        "repeat-new-password": "Repeat the new Password"
+    },
+    "verify-email": {
+        "verify-email": "Verify email",
+        "no-token-specified": "No token specified.",
+        "no-userid-specified": "No userId specified.",
+        "email-verified": "Your email has been verified.",
+        "verifying-email": "Verifying email..."
+    }
+}

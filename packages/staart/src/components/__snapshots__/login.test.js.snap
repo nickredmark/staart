@@ -10,7 +10,7 @@ exports[`<Login /> renders 1`] = `
   }
 >
   <h1>
-    Log in
+    login-component.login
   </h1>
   <form
     onSubmit={[Function]}
@@ -21,7 +21,7 @@ exports[`<Login /> renders 1`] = `
       <label
         htmlFor="username"
       >
-        Username or Email
+        login-local.username-or-email
       </label>
       <input
         className="form-control"
@@ -36,7 +36,7 @@ exports[`<Login /> renders 1`] = `
       <label
         htmlFor="password"
       >
-        Password
+        login-local.password
       </label>
       <input
         className="form-control"
@@ -47,7 +47,7 @@ exports[`<Login /> renders 1`] = `
       <a
         href="/forgot-password"
       >
-        Forgot your password?
+        login-local.forgot-your-password
       </a>
     </div>
     <div
@@ -57,7 +57,7 @@ exports[`<Login /> renders 1`] = `
         className="btn btn-primary btn-block"
         type="submit"
       >
-        Log in
+        login-local.login
       </button>
     </div>
   </form>
@@ -68,14 +68,15 @@ exports[`<Login /> renders 1`] = `
       }
     }
   >
-    or
+    login-component.or
   </p>
   <p>
-    New user? 
+    login-component.new-user
+     
     <a
       href="/register"
     >
-      register
+      login-component.register
     </a>
     .
   </p>

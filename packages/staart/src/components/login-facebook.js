@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {compose} from 'recompose'
 import {withOoth} from 'ooth-client-react'
 import withSettings from '../hocs/settings'
+import withI18n from '../hocs/i18n'
 
 class FacebookComponent extends Component {
     constructor() {
@@ -54,7 +55,7 @@ class FacebookComponent extends Component {
                         color: 'white'
                     }}
                 >
-                    {this.props.label ? this.props.label : 'Log in with Facebook'}
+                    {this.props.label ? this.props.label : this.props.__('login-facebook.login-with-facebook')}
                 </button>
                 {this.state.state === 'error' &&
                     <div className="alert alert-danger" role="alert">
@@ -70,6 +71,7 @@ class FacebookComponent extends Component {
 const Facebook = compose(
     withOoth,
     withSettings,
+    withI18n,
 )(FacebookComponent)
 
 export default Facebook

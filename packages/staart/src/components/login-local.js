@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {compose} from 'recompose'
 import {withOoth} from 'ooth-client-react'
+import withI18n from '../hocs/i18n'
 
 class LoginFormComponent extends Component {
     constructor() {
@@ -10,6 +11,7 @@ class LoginFormComponent extends Component {
         }
     }
     render() {
+        const {__} = this.props
         return <form onSubmit={e => {
             e.preventDefault()
             const username = this.username.value,
@@ -30,7 +32,7 @@ class LoginFormComponent extends Component {
                 </div>
             }
             <div className="form-group">
-                <label htmlFor="username">Username or Email</label>
+                <label htmlFor="username">{__('login-local.username-or-email')}</label>
                 <input
                     type="string"
                     className="form-control"
@@ -42,7 +44,7 @@ class LoginFormComponent extends Component {
                 />
             </div>
             <div className="form-group">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">{__('login-local.password')}</label>
                 <input
                     type="password"
                     className="form-control"
@@ -52,16 +54,17 @@ class LoginFormComponent extends Component {
                         this.password = password
                     }}
                 />
-                <a href="/forgot-password">Forgot your password?</a>
+                <a href="/forgot-password">{__('login-local.forgot-your-password')}</a>
             </div>
             <div className="form-group">
-                <button type="submit" className="btn btn-primary btn-block">Log in</button>
+                <button type="submit" className="btn btn-primary btn-block">{__('login-local.login')}</button>
             </div>
         </form>
     }
 }
 const LoginForm = compose(
     withOoth,
+    withI18n,
 )(LoginFormComponent)
 
 export default LoginForm

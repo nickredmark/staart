@@ -1,17 +1,22 @@
 import React, {Component} from 'react'
 import {withOoth} from 'ooth-client-react'
+import withI18n from '../hocs/i18n'
 
-export default ({token, userId}) => (
+const VerifyEmailComponent = ({__, token, userId}) => (
         <div style={{
             maxWidth: '300px',
             margin: 'auto'
         }}>
-            <h1>Verify email</h1>
-            <VerifyEmail token={token} userId={userId}/>
+            <h1>{__('verify-email.verify-email')}</h1>
+            <VerifyEmailForm token={token} userId={userId}/>
         </div>
 )
+const VerifyEmail = compose(
+    withI18n,
+)(VerifyEmailComponent)
+export default VerifyEmail
 
-class VerifyEmailComponent extends Component {
+class VerifyEmailFormComponent extends Component {
     constructor() {
         super()
         this.state = {
@@ -19,12 +24,13 @@ class VerifyEmailComponent extends Component {
         }
     }
     componentDidMount() {
+        const {__} = this.props
         if (!this.props.token) {
-            console.error('No token specified.')
+            console.error(__('verify-email.no-token-specified'))
             return
         }
         if (!this.props.userId) {
-            console.error('No userId specified.')
+            console.error(__('verify-email.no-userid-specified'))
         }
         this.props.oothClient.method('local', 'verify', {
             token: this.props.token,
@@ -41,18 +47,18 @@ class VerifyEmailComponent extends Component {
     }
     render() {
         if (!this.props.token) {
-            return <p>No token specified.</p>
+            return <p>{__('verify-email.no-token-specified')}</p>
         } else if (!this.props.userId) {
-            return <p>No userId specified.</p>
+            return <p>{__('verify-email.no-userid-specified')}</p>
         } else {
             if (this.state.error) {
                 return <p>{this.state.error}</p>
             } else if (this.state.verified) {
-                return <p>Your email has been verified.</p>
+                return <p>{__('verify-email.email-verified')}</p>
             } else {
-                return <p>Verifying email...</p>
+                return <p>{__('verify-email.verifying-email')}</p>
             }
         }
     }
 }
-const VerifyEmail = withOoth(VerifyEmailComponent)
+const VerifyEmailForm = withOoth(VerifyEmailFormComponent)

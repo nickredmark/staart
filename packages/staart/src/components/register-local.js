@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {withOoth} from 'ooth-client-react'
 import {compose} from 'recompose'
+import withI18n from '../hocs/i18n'
 
 class RegisterFormComponent extends Component {
     constructor() {
@@ -10,10 +11,11 @@ class RegisterFormComponent extends Component {
         }
     }
     render() {
+        const {__} = this.props
         return <form onSubmit={e => {
             e.preventDefault()
-            const email = this.email.value,
-                password = this.password.value;
+            const email = this.email.value;
+            const password = this.password.value;
             this.props.oothClient.method('local', 'register', {
                 email,
                 password
@@ -34,7 +36,7 @@ class RegisterFormComponent extends Component {
                 </div>
             }
             <div className="form-group">
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">{__('register-local.email')}</label>
                 <input
                     type="email"
                     className="form-control"
@@ -46,7 +48,7 @@ class RegisterFormComponent extends Component {
                 />
             </div>
             <div className="form-group">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">{__('register-local.password')}</label>
                 <input
                     type="password"
                     className="form-control"
@@ -58,13 +60,14 @@ class RegisterFormComponent extends Component {
                 />
             </div>
             <div className="form-group">
-                <button type="submit" className="btn btn-primary btn-block">Register</button>
+                <button type="submit" className="btn btn-primary btn-block">{__('register-local.register')}</button>
             </div>
         </form>
     }
 }
 const RegisterForm = compose(
     withOoth,
+    withI18n,
 )(RegisterFormComponent)
 
 export default RegisterForm

@@ -2,27 +2,31 @@ import React, {Component} from 'react'
 import {withUser, withOoth} from 'ooth-client-react'
 import {compose} from 'recompose'
 import ConnectFacebook from './login-facebook'
+import withI18n from '../hocs/i18n'
 
 class FacebookComponent extends Component {
     render() {
+        const {__, user} = this.props
+
         return <div>
-            <h2>Facebook</h2>
-            {this.props.user.facebook ?
+            <h2>{__('account-facebook.facebook')}</h2>
+            {user.facebook ?
                 <div>
-                    <p>Connected with Facebook.</p>
-                    <p>Facebook email: {this.props.user.facebook.email}</p>
+                    <p>{__('account-facebook.connected-with-facebook')}</p>
+                    <p>{__('account-facebook.facebook-email')} {user.facebook.email}</p>
                 </div>
             :
                 <div>
-                    <p>No Facebook login set.</p>
-                    <ConnectFacebook label="Connect Facebook"/>
+                    <p>{__('account-facebook.no-facebook-login-set')}</p>
+                    <ConnectFacebook label={__('account-facebook.connect-facebook')}/>
                 </div>
             }
         </div>
     }
 }
 const Facebook = compose(
-    withUser
+    withUser,
+    withI18n,
 )(FacebookComponent)
 
 export default Facebook
