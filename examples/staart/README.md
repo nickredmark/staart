@@ -8,4 +8,4 @@ Copy `public-settings.dist.js` to `public-settings.js` and adapt to your needs.
 
 Build: `yarn`
 
-Dev: `yarn run dev`
+Dev: `yarn dev`

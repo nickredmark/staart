@@ -46,6 +46,6 @@
     "react": "^16.1.1",
     "react-apollo": "^2.0.1",
     "react-dom": "^16.1.1",
-    "staart": "^1.0.0"
+    "staart": "2.0.0"
   }
 }

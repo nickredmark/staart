@@ -41,7 +41,7 @@ class BlogComponent extends React.Component {
             <CreatePost onCreatePost={refetch}/>
             <h2>Posts</h2>
             <ul style={{listStyle: 'none', padding: 0}}>
-                {posts.map(post => (
+                {posts && posts.map(post => (
                     <li key={post._id}>
                         <h3>{post.title}</h3>
                         <div>
