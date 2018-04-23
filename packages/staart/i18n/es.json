@@ -1,0 +1,106 @@
+{
+    "account-facebook": {
+        "facebook": "Facebook",
+        "connected-with-facebook": "Conectado a trevez Facebook.",
+        "facebook-email": "email de Facebook ",
+        "no-facebook-login-set": "No se configuró el inicio de sesión de Facebook.",
+        "connect-facebook": "Conectar con Facebook"
+    },
+    "account-google": {
+        "google": "Google",
+        "connected-with-google": "Conectado a trevez Google.",
+        "google-email": "Google email",
+        "no-google-login-set": "No se configuró el inicio de sesión de Google.",
+        "connect-google": "Connectar con Google"
+    },
+    "account-local": {
+        "email": {
+            "change-email": "Cambiar correo electrónico",
+            "set-email": "Establecer correo electrónico",
+            "email": "Correo electrónico",
+            "verified": "verificado",
+            "not-verified": "No verificado",
+            "send-verification-email": "Enviar correo electrónico de verificación",
+            "verification-email-sent": "Correo electrónico de verificación enviado.",
+            "email-verification": "Correo electrónico de verificación"
+        },
+        "username": {
+            "username": "Usuario"
+        },
+        "password": {
+            "passwords-dont-match": "Las contraseñas no coinciden.",
+            "change-password": "Cambiar contraseña",
+            "old-password-if-any": "Contraseña anterior (si existe)",
+            "new-password": "Nueva contraseña",
+            "repeat-new-password": "Repetir contraseña"
+        }
+    },
+    "account": {
+        "account": "Cuenta"
+    },
+    "forgot-password": {
+        "forgot-password": "Olvidar contraseña",
+        "back-to": "Regresar a",
+        "login-page": "Página de inicio de sesión",
+        "password-reset-email-sent": "Se ha enviado un correo electrónico para restablecer la contraseña.",
+        "username-or-email": "Nombre de usuario o correo electrónico",
+        "send-reset-password-email": "Enviar correo electrónico para restablecer la contraseña"
+    },
+    "layout": {
+        "toggle-navigation": "Alternar navegación"
+    },
+    "login-facebook": {
+        "login-with-facebook": "Iniciar sesión con Facebook",
+        "register-with-facebook": "Registrarse con Facebook"
+    },
+    "login-google": {
+        "login-with-google": "Iniciar sesión con Google",
+        "register-with-google": "Registrarse con Google"
+    },
+    "login-local": {
+        "username-or-email": "Nombre de usuario o correo electrónico",
+        "password": "Contraseña",
+        "forgot-your-password": "¿Olvidaste tu contraseña?",
+        "login": "Iniciar sesión"
+    },
+    "login-component": {
+        "login": "Iniciar sesión",
+        "or": "o",
+        "new-user": "¿Nuevo usuario?",
+        "register": "Registrarse"
+    },
+    "logout": {
+        "logging-out": "Cerrando sesión ...",
+        "goodbye": "¡adiós!"
+    },
+    "register-local": {
+        "email": "Email",
+        "password": "Contraseña",
+        "register": "Registrarse"
+    },
+    "register": {
+        "register-with-facebook": "Registrarse con",
+        "register": "Registrarse",
+        "or": "o",
+        "login": "Iniciar sesión",
+        "have-account": "¿Ya tienes una cuenta?"
+    },
+    "reset-password": {
+        "reset-password": "Restablecer contraseña",
+        "no-token-specified": "Token no especificado.",
+        "no-userid-specified": "Identificación del usuario no especificada.",
+        "password-reset": "Su contraseña ha sido restablecida.",
+        "login": "Iniciar sesión",
+        "with-new-password": "con su nueva contraseña.",
+        "passwords-dont-match": "Las contraseñas no coinciden.",
+        "new-password": "Nueva contraseña",
+        "repeat-new-password": "Repite la nueva contraseña"
+    },
+    "verify-email": {
+        "verify-email": "Verificar correo electrónico",
+        "no-token-specified": "Token no especificado.",
+        "no-userid-specified": "Identificación del usuario no especificada.",
+        "email-verified": "Su correo electrónico ha sido verificado.",
+        "verifying-email": "Verificando el correo electrónico..."
+    }
+}
