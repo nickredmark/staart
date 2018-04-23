@@ -39,7 +39,7 @@
         "account": "Account"
     },
     "forgot-password": {
-        "forgot-password": "Forgot passwrod",
+        "forgot-password": "Forgot password",
         "back-to": "Back to",
         "login-page": "log in page",
         "password-reset-email-sent": "A password reset email has been sent.",
@@ -67,7 +67,7 @@
         "login": "Log in",
         "or": "or",
         "new-user": "New user?",
-        "register": "register"
+        "register": "Register"
     },
     "logout": {
         "logging-out": "Logging you out...",
