@@ -11,3 +11,9 @@ Copy `public-settings.dist.js` to `public-settings.js` and adapt to your needs.
 Build: `yarn`
 
 Dev: `yarn dev`
+
+With docker-compose:
+
+```
+docker-compose up
+```
