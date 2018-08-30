@@ -23,12 +23,14 @@ module.exports = async function start(app, settings) {
   oothLocal({
     ooth
   });
-  emailer({
-    ooth,
-    sendMail: mail(settings.mailgun),
-    from: "info@example.com",
-    siteName: "My Example Site"
-  });
+  if (settings.mailgun) {
+    emailer({
+      ooth,
+      sendMail: mail(settings.mailgun),
+      from: "info@example.com",
+      siteName: "My Example Site"
+    });
+  }
   oothFacebook({ ooth, ...settings.facebook });
   oothGoogle({ ooth, ...settings.google });
 };
