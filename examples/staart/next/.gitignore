@@ -1,0 +1,5 @@
+settings.js
+public-settings.js
+.next
+node_modules
+*.sh
