@@ -18,11 +18,6 @@ Check out a live example here: [staart.nmr.io](http://staart.nmr.io). Featuring:
 * Forgot password/reset password pages
 * Verify email page
 
-Note:
-
-* This example site won't generate and send any emails
-* Facebook and Google Logins are still TODO, and on the way
-
 ## Ooth
 
 Staart's sister project is [Ooth](https://github.com/nmaro/ooth), a user accounts library for node (that you can use independently of staart).
