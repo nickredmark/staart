@@ -1,5 +1,5 @@
 {
-  "extends": ["@smartive/tslint-config", "tslint-config-prettier"],
+  "extends": ["@smartive/tslint-config/tslint-react", "tslint-config-prettier"],
   "rules": {
     "arrow-parens": true,
     "ter-arrow-parens": "as-needed",

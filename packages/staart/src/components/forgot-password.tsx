@@ -45,53 +45,53 @@ class ForgotPasswordFormComponent extends React.Component<ForgotPasswordFormProp
     this.state = {};
   }
 
-  render() {
+  public render(): JSX.Element {
     const { __ } = this.props;
 
     if (this.state.sent) {
       return <p>{__('forgot-password.password-reset-email-sent')}</p>;
-    } else {
-      return (
-        <Form
-          onSubmit={() => {
-            const username = this.username!.value;
-            this.props.oothClient
-              .method<{ message: string }>('local', 'forgot-password', {
-                username,
-              })
-              .then(({ message }) => {
-                this.setState({
-                  message,
-                  sent: true,
-                  state: 'success',
-                });
-              })
-              .catch((e) => {
-                this.setState({
-                  state: 'error',
-                  message: e.message,
-                });
-              });
-          }}
-          state={this.state.state}
-          message={this.state.message}
-          submitLabel={__('forgot-password.send-reset-password-email')}
-        >
-          <div className="form-group">
-            <label htmlFor="username">{__('forgot-password.username-or-email')}</label>
-            <input
-              type="username"
-              className="form-control"
-              id="username"
-              placeholder={__('forgot-password.username-or-email')}
-              ref={(username) => {
-                this.username = username!;
-              }}
-            />
-          </div>
-        </Form>
-      );
     }
+
+    return (
+      <Form
+        onSubmit={() => {
+          const username = this.username!.value;
+          this.props.oothClient
+            .method<{ message: string }>('local', 'forgot-password', {
+              username,
+            })
+            .then(({ message }) => {
+              this.setState({
+                message,
+                sent: true,
+                state: 'success',
+              });
+            })
+            .catch((e) => {
+              this.setState({
+                state: 'error',
+                message: e.message,
+              });
+            });
+        }}
+        state={this.state.state}
+        message={this.state.message}
+        submitLabel={__('forgot-password.send-reset-password-email')}
+      >
+        <div className="form-group">
+          <label htmlFor="username">{__('forgot-password.username-or-email')}</label>
+          <input
+            type="username"
+            className="form-control"
+            id="username"
+            placeholder={__('forgot-password.username-or-email')}
+            ref={(username) => {
+              this.username = username!;
+            }}
+          />
+        </div>
+      </Form>
+    );
   }
 }
 const ForgotPasswordForm = compose<ForgotPasswordFormProps, {}>(

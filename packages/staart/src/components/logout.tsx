@@ -18,18 +18,17 @@ type Props = {
 };
 
 class LogoutComponent extends React.Component<Props> {
-  componentDidMount() {
+  public componentDidMount(): void {
     if (this.props.user) {
       this.props.oothClient.logout();
     }
   }
-  render() {
+  public render(): JSX.Element {
     const { __, user } = this.props;
     if (user) {
       return <p>{__('logout.logging-out')}</p>;
-    } else {
-      return <p>{__('logout.goodbye')}</p>;
     }
+    return <p>{__('logout.goodbye')}</p>;
   }
 }
 const Logout = compose<Props, {}>(

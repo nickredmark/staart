@@ -19,7 +19,7 @@ type ExtendedUser = User & {
 };
 
 class FacebookComponent extends React.Component<Props> {
-  render() {
+  public render(): JSX.Element {
     const { __, user, clientId } = this.props;
 
     return (

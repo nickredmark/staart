@@ -12,21 +12,21 @@ type Props = {
 export default (url: string) => {
   const withLoginRequired = (C: React.ComponentClass | React.SFC) =>
     class extends React.Component<Props> {
-      componentDidMount() {
+      public componentDidMount(): void {
         if (!this.props.user) {
           this.props.Router.push(`/login?next=${encodeURIComponent(url)}`);
         }
       }
-      render() {
+      public render(): JSX.Element {
         if (this.props.user) {
           return <C {...this.props} />;
-        } else {
-          return (
-            <div className="container">
-              <p>You need to log in to see this page.</p>
-            </div>
-          );
         }
+
+        return (
+          <div className="container">
+            <p>You need to log in to see this page.</p>
+          </div>
+        );
       }
     };
 

@@ -29,7 +29,7 @@ class FacebookComponent extends React.Component<Props, State> {
     this.state = {};
   }
 
-  componentDidMount() {
+  public componentDidMount(): void {
     if (typeof (window as any).FB === 'undefined') {
       const $script = require('scriptjs');
       $script('//connect.facebook.net/en_US/sdk.js', () => {
@@ -48,50 +48,49 @@ class FacebookComponent extends React.Component<Props, State> {
     }
   }
 
-  render() {
-    if (this.state.show) {
-      return (
-        <div className="form-group">
-          <button
-            onClick={() => {
-              (window as any).FB.login(
-                (response: Response) => {
-                  this.props.oothClient
-                    .authenticate('facebook', 'login', {
-                      access_token: response.authResponse.accessToken,
-                    })
-                    .catch((e) => {
-                      this.setState({
-                        state: 'error',
-                        message: e.message,
-                      });
-                    });
-                },
-                {
-                  scope: 'email',
-                },
-              );
-            }}
-            type="button"
-            className="btn btn-block btn-default"
-            style={{
-              backgroundColor: '#3B5998',
-              border: '#3B5998',
-              color: 'white',
-            }}
-          >
-            {this.props.label ? this.props.label : this.props.__('login-facebook.login-with-facebook')}
-          </button>
-          {this.state.state === 'error' && (
-            <div className="alert alert-danger" role="alert">
-              {this.state.message}
-            </div>
-          )}
-        </div>
-      );
-    } else {
+  public render(): JSX.Element | null {
+    if (!this.state.show) {
       return null;
     }
+    return (
+      <div className="form-group">
+        <button
+          onClick={() => {
+            (window as any).FB.login(
+              (response: Response) => {
+                this.props.oothClient
+                  .authenticate('facebook', 'login', {
+                    access_token: response.authResponse.accessToken,
+                  })
+                  .catch((e) => {
+                    this.setState({
+                      state: 'error',
+                      message: e.message,
+                    });
+                  });
+              },
+              {
+                scope: 'email',
+              },
+            );
+          }}
+          type="button"
+          className="btn btn-block btn-default"
+          style={{
+            backgroundColor: '#3B5998',
+            border: '#3B5998',
+            color: 'white',
+          }}
+        >
+          {this.props.label ? this.props.label : this.props.__('login-facebook.login-with-facebook')}
+        </button>
+        {this.state.state === 'error' && (
+          <div className="alert alert-danger" role="alert">
+            {this.state.message}
+          </div>
+        )}
+      </div>
+    );
   }
 }
 const Facebook = compose<Props, { clientId: string; label?: string }>(

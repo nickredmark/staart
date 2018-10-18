@@ -29,11 +29,11 @@ class GoogleComponent extends React.Component<Props, State> {
     this.state = {};
   }
 
-  componentDidMount() {
+  public componentDidMount(): void {
     if (typeof (window as any).gapi === 'undefined') {
       const $script = require('scriptjs');
       $script('//apis.google.com/js/client:platform.js', () => {
-        let gapi = (window as any).gapi;
+        const gapi = (window as any).gapi;
         gapi.load('auth2', () => {
           if (!gapi.auth2.getAuthInstance()) {
             gapi.auth2
@@ -72,62 +72,61 @@ class GoogleComponent extends React.Component<Props, State> {
       });
     }
   }
-  render() {
-    if (this.state.show) {
-      return (
-        <div className="form-group">
-          <button
-            onClick={() => {
-              const auth2 = (window as any).gapi.auth2.getAuthInstance();
-              auth2
-                .signIn(/*{
+  public render(): JSX.Element | null {
+    if (!this.state.show) {
+      return null;
+    }
+    return (
+      <div className="form-group">
+        <button
+          onClick={() => {
+            const auth2 = (window as any).gapi.auth2.getAuthInstance();
+            auth2
+              .signIn(/*{
                             response_type,
                             redirect_uri,
                             fetch_basic_profile,
                             prompt,
                             scope
                         }*/)
-                .then(
-                  (res: Response) => {
-                    return this.props.oothClient
-                      .authenticate('google', 'login', {
-                        id_token: res.getAuthResponse().id_token,
-                      })
-                      .catch((e) => {
-                        this.setState({
-                          state: 'error',
-                          message: e.message,
-                        });
+              .then(
+                (res: Response) => {
+                  return this.props.oothClient
+                    .authenticate('google', 'login', {
+                      id_token: res.getAuthResponse().id_token,
+                    })
+                    .catch((e) => {
+                      this.setState({
+                        state: 'error',
+                        message: e.message,
                       });
-                  },
-                  (e: Error) => {
-                    this.setState({
-                      state: 'error',
-                      message: e.message,
                     });
-                  },
-                );
-            }}
-            type="button"
-            className="btn btn-block btn-default"
-            style={{
-              backgroundColor: '#d34836',
-              border: '#d34836',
-              color: 'white',
-            }}
-          >
-            {this.props.label ? this.props.label : this.props.__('login-google.login-with-google')}
-          </button>
-          {this.state.state === 'error' && (
-            <div className="alert alert-danger" role="alert">
-              {this.state.message}
-            </div>
-          )}
-        </div>
-      );
-    } else {
-      return null;
-    }
+                },
+                (e: Error) => {
+                  this.setState({
+                    state: 'error',
+                    message: e.message,
+                  });
+                },
+              );
+          }}
+          type="button"
+          className="btn btn-block btn-default"
+          style={{
+            backgroundColor: '#d34836',
+            border: '#d34836',
+            color: 'white',
+          }}
+        >
+          {this.props.label ? this.props.label : this.props.__('login-google.login-with-google')}
+        </button>
+        {this.state.state === 'error' && (
+          <div className="alert alert-danger" role="alert">
+            {this.state.message}
+          </div>
+        )}
+      </div>
+    );
   }
 }
 const Google = compose<Props, { clientId: string; label?: string }>(

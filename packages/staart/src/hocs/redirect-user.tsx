@@ -12,17 +12,19 @@ type Props = {
 
 export default (C: React.ComponentClass | React.SFC) => {
   class Redirect extends React.Component<Props> {
-    componentDidMount() {
+    public componentDidMount(): void {
       if (this.props.user) {
         this.props.Router.push(this.props.next || '/dashboard');
       }
     }
-    componentDidUpdate() {
+
+    public componentDidUpdate(): void {
       if (this.props.user) {
         this.props.Router.push(this.props.next || '/dashboard');
       }
     }
-    render() {
+
+    public render(): JSX.Element {
       if (this.props.user) {
         return (
           <div
@@ -36,9 +38,9 @@ export default (C: React.ComponentClass | React.SFC) => {
             </p>
           </div>
         );
-      } else {
-        return <C {...this.props} />;
       }
+
+      return <C {...this.props} />;
     }
   }
   return compose<Props, {}>(

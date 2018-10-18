@@ -47,74 +47,77 @@ class ResetPasswordFormComponent extends React.Component<ResetPasswordFormProps,
     this.state = {};
   }
 
-  render() {
+  public render(): JSX.Element {
     const { __ } = this.props;
+
     if (!this.props.token) {
       return <p>{__('reset-password.no-token-specified')}</p>;
-    } else if (!this.props.userId) {
-      return <p>{__('reset-password.no-userid-specified')}</p>;
-    } else {
-      if (this.state.sent) {
-        return (
-          <p>
-            {__('reset-password.password-reset')} <a href="/login">{__('reset-password.login')}</a>{' '}
-            {__('reset-password.with-new-password')}
-          </p>
-        );
-      } else {
-        return (
-          <Form
-            onSubmit={() => {
-              const password = this.password!.value;
-              const password2 = this.password2!.value;
-              if (password !== password2) {
-                console.error(__('reset-password.passwords-dont-match'));
-                return;
-              }
-              this.props.oothClient
-                .method('local', 'reset-password', {
-                  userId: this.props.userId,
-                  token: this.props.token,
-                  newPassword: password,
-                })
-                .then(() => {
-                  this.setState({
-                    sent: true,
-                  });
-                });
-            }}
-            state={this.state.state}
-            message={this.state.message}
-            submitLabel={__('reset-password.reset-password')}
-          >
-            <div className="form-group">
-              <label htmlFor="password">{__('reset-password.new-password')}</label>
-              <input
-                type="password"
-                className="form-control"
-                id="password"
-                placeholder="******"
-                ref={(password) => {
-                  this.password = password!;
-                }}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="password2">{__('reset-password.repeat-new-password')}</label>
-              <input
-                type="password"
-                className="form-control"
-                id="password2"
-                placeholder="******"
-                ref={(password2) => {
-                  this.password2 = password2!;
-                }}
-              />
-            </div>
-          </Form>
-        );
-      }
     }
+
+    if (!this.props.userId) {
+      return <p>{__('reset-password.no-userid-specified')}</p>;
+    }
+
+    if (this.state.sent) {
+      return (
+        <p>
+          {__('reset-password.password-reset')} <a href="/login">{__('reset-password.login')}</a>{' '}
+          {__('reset-password.with-new-password')}
+        </p>
+      );
+    }
+
+    return (
+      <Form
+        onSubmit={() => {
+          const password = this.password!.value;
+          const password2 = this.password2!.value;
+          if (password !== password2) {
+            console.error(__('reset-password.passwords-dont-match'));
+            return;
+          }
+          this.props.oothClient
+            .method('local', 'reset-password', {
+              userId: this.props.userId,
+              token: this.props.token,
+              newPassword: password,
+            })
+            .then(() => {
+              this.setState({
+                sent: true,
+              });
+            });
+        }}
+        state={this.state.state}
+        message={this.state.message}
+        submitLabel={__('reset-password.reset-password')}
+      >
+        <div className="form-group">
+          <label htmlFor="password">{__('reset-password.new-password')}</label>
+          <input
+            type="password"
+            className="form-control"
+            id="password"
+            placeholder="******"
+            ref={(password) => {
+              this.password = password!;
+            }}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password2">{__('reset-password.repeat-new-password')}</label>
+          <input
+            type="password"
+            className="form-control"
+            id="password2"
+            placeholder="******"
+            ref={(password2) => {
+              this.password2 = password2!;
+            }}
+          />
+        </div>
+      </Form>
+    );
   }
 }
 const ResetPasswordForm = compose<ResetPasswordFormProps, Omit<ResetPasswordFormProps, 'oothClient' | '__'>>(

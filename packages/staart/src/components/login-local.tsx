@@ -24,7 +24,7 @@ class LoginFormComponent extends React.Component<Props, State> {
     this.state = {};
   }
 
-  render() {
+  public render(): JSX.Element {
     const { __ } = this.props;
     return (
       <Form

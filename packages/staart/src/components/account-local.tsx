@@ -6,7 +6,7 @@ import withI18n, { __ } from '../hocs/i18n';
 import { User, OothClient } from 'ooth-client';
 
 class LocalComponent extends React.Component {
-  render() {
+  public render(): JSX.Element {
     return (
       <div>
         <Username />
@@ -49,7 +49,7 @@ class EmailComponent extends React.Component<EmailComponentProps, EmailComponent
       sent: false,
     };
   }
-  render() {
+  public render(): JSX.Element {
     const { __, user } = this.props;
     const { email, verified } = user.local || { email: undefined, verified: undefined };
     return (
@@ -64,14 +64,14 @@ class EmailComponent extends React.Component<EmailComponentProps, EmailComponent
               })
               .then(({ message }) => {
                 this.setState({
-                  state: 'success',
                   message,
+                  state: 'success',
                 });
               })
               .catch(({ message }) => {
                 this.setState({
-                  state: 'error',
                   message,
+                  state: 'error',
                 });
               });
           }}
@@ -156,7 +156,7 @@ class UsernameFormComponent extends React.Component<UsernameFormComponentProps, 
     this.state = {};
   }
 
-  render() {
+  public render(): JSX.Element {
     const { __, user } = this.props;
     const username = user.local && user.local.username;
     return (
@@ -173,14 +173,14 @@ class UsernameFormComponent extends React.Component<UsernameFormComponentProps, 
               })
               .then(({ message }) => {
                 this.setState({
-                  state: 'success',
                   message,
+                  state: 'success',
                 });
               })
               .catch(({ message }) => {
                 this.setState({
-                  state: 'error',
                   message,
+                  state: 'error',
                 });
               });
           }}
@@ -233,7 +233,7 @@ class PasswordComponent extends React.Component<PasswordComponentProps, Password
     this.state = {};
   }
 
-  render() {
+  public render(): JSX.Element {
     const { __, oothClient } = this.props;
 
     return (

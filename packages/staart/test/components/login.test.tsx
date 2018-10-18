@@ -1,22 +1,20 @@
-const React = require('react');
-const {create} = require('react-test-renderer');
-const Login = require('./login').default;
-const {provideOothNext} = require('../../test/utils');
-const {compose, withContext} = require('recompose')
-const  PropTypes = require('prop-types')
+import * as React from 'react';
+import { create } from 'react-test-renderer';
+import Login from '../../src/components/login';
+import { provideOothNext } from '../../test/utils';
+import { compose, withContext } from 'recompose';
+import * as PropTypes from 'prop-types';
 
-const provideI18n = withContext({__: PropTypes.func}, () => ({__: key => key}))
+const provideI18n = withContext({ __: PropTypes.func }, () => ({ __: (key: string) => key }));
 
-const LoginWithOoth = compose(
-    provideOothNext,
-    provideI18n,
-)(Login)
+const LoginWithOoth = compose<any, any>(
+  provideOothNext,
+  provideI18n,
+)(Login);
 
 describe('<Login />', () => {
-    test('renders', async () => {
-        const component = create(
-            <LoginWithOoth/>
-        )
-        expect(component.toJSON()).toMatchSnapshot();
-    })
+  test('renders', async () => {
+    const component = create(<LoginWithOoth />);
+    expect(component.toJSON()).toMatchSnapshot();
+  });
 });

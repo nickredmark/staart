@@ -24,7 +24,7 @@ class RegisterFormComponent extends React.Component<Props, State> {
     this.state = {};
   }
 
-  render() {
+  public render(): JSX.Element {
     const { __ } = this.props;
     return (
       <Form
@@ -38,8 +38,8 @@ class RegisterFormComponent extends React.Component<Props, State> {
             })
             .then(() => {
               return this.props.oothClient.authenticate('local', 'login', {
-                username: email,
                 password,
+                username: email,
               });
             })
             .then(() => {

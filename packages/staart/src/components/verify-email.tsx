@@ -42,7 +42,7 @@ class VerifyEmailFormComponent extends React.Component<VerifyEmailFormProps, Ver
     super(props);
     this.state = {};
   }
-  componentDidMount() {
+  public componentDidMount(): void {
     const { __ } = this.props;
     if (!this.props.token) {
       console.error(__('verify-email.no-token-specified'));
@@ -71,22 +71,25 @@ class VerifyEmailFormComponent extends React.Component<VerifyEmailFormProps, Ver
       });
   }
 
-  render() {
+  public render(): JSX.Element {
     const { __ } = this.props;
 
     if (!this.props.token) {
       return <p>{__('verify-email.no-token-specified')}</p>;
-    } else if (!this.props.userId) {
-      return <p>{__('verify-email.no-userid-specified')}</p>;
-    } else {
-      if (this.state.state === 'error') {
-        return <p>{this.state.message}</p>;
-      } else if (this.state.verified) {
-        return <p>{__('verify-email.email-verified')}</p>;
-      } else {
-        return <p>{__('verify-email.verifying-email')}</p>;
-      }
     }
+
+    if (!this.props.userId) {
+      return <p>{__('verify-email.no-userid-specified')}</p>;
+    }
+    if (this.state.state === 'error') {
+      return <p>{this.state.message}</p>;
+    }
+
+    if (this.state.verified) {
+      return <p>{__('verify-email.email-verified')}</p>;
+    }
+
+    return <p>{__('verify-email.verifying-email')}</p>;
   }
 }
 const VerifyEmailForm = compose<VerifyEmailFormProps, Omit<VerifyEmailFormProps, 'oothClient' | '__'>>(

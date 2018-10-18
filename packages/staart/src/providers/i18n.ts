@@ -11,6 +11,7 @@ type TranslationGroup = {
   [key: string]: string | TranslationGroup;
 };
 
+/* tslint:disable-next-line function-name */
 function __(translations: Translations, language: string, key: string): string {
   const parts = key.split('.');
   let current: string | TranslationGroup = translations[language];
@@ -23,8 +24,10 @@ function __(translations: Translations, language: string, key: string): string {
   return current as string;
 }
 
-export default (translations: Translations, language = 'en') =>
-  withContext(
+export default (translations: Translations, language = 'en') => {
+  let currentLanguage = language;
+
+  return withContext(
     {
       translations: PropTypes.object,
       __: PropTypes.func,
@@ -32,7 +35,8 @@ export default (translations: Translations, language = 'en') =>
     },
     () => ({
       translations,
-      __: (key: string) => __(translations, language, key),
-      setLanguage: (lang: string) => (language = lang),
+      __: (key: string) => __(translations, currentLanguage, key),
+      setLanguage: (lang: string) => (currentLanguage = lang),
     }),
   );
+};
