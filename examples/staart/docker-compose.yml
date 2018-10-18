@@ -19,4 +19,4 @@ services:
     build: ./proxy
     env_file: ./proxy/.env
     ports:
-      - '8080:8080'
+      - '$PORT:8080'
