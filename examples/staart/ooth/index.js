@@ -27,7 +27,7 @@ async function start() {
     app.options(corsMiddleware);
 
     const client = await MongoClient.connect(
-      `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_HOST}/${process.env.MONGO_DB}`,
+      `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DB}`,
     );
     const db = client.db(process.env.MONGO_DB);
 

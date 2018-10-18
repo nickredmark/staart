@@ -44,7 +44,6 @@ function setupAuthEndpoints(app) {
     done(null, userId);
   });
   passport.deserializeUser((userId, done) => {
-    console.log(userId, '?');
     done(null, userId);
   });
 }
@@ -52,7 +51,7 @@ function setupAuthEndpoints(app) {
 const start = async () => {
   try {
     const client = await MongoClient.connect(
-      `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_HOST}/${process.env.MONGO_DB}`,
+      `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DB}`,
     );
     const db = client.db(process.env.MONGO_DB);
 
