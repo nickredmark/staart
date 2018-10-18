@@ -7,8 +7,7 @@ COPY package.json package-lock.json ./
 RUN npm install
 
 COPY . .
-RUN npm build
 
-EXPOSE 3000
+EXPOSE 8080
 ENTRYPOINT [ "npm", "run"]
 CMD [ "start" ]

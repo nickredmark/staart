@@ -1,9 +1,16 @@
-import Layout from '../components/layout'
-import withPage from '../providers/page'
-import Login from 'staart/lib/components/login'
+import Layout from '../components/layout';
+import withPage from '../providers/page';
+import Login from 'staart/lib/components/login';
+import getConfig from 'next/config';
 
-export default withPage(({url: {query: {next}}}) => {
-    return <Layout title="Log in" page="login">
-        <Login next={next}/>
+const {
+  publicRuntimeConfig: { facebookClientId, googleClientId },
+} = getConfig();
+
+export default withPage(({ url: { query: { next } } }) => {
+  return (
+    <Layout title="Log in" page="login">
+      <Login next={next} facebookClientId={facebookClientId} googleClientId={googleClientId} />
     </Layout>
-})
+  );
+});

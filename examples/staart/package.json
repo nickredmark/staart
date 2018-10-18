@@ -1,0 +1,16 @@
+{
+  "name": "staart-boilerplate",
+  "version": "1.0.0",
+  "scripts": {
+    "bootstrap": "npm install && (cd api && npm run bootstrap) && (cd next && npm run bootstrap) && (cd ooth && npm run bootstrap) && (cd proxy && npm run bootstrap)",
+    "dev-environment": "docker-compose -f docker-compose.yml -f docker-compose.local.yml up --build db redis proxy",
+    "start:dev": "concurrently \"cd api && npm run dev\" \"cd next && npm run dev\" \"cd ooth && npm run dev\"",
+    "start:local": "docker-compose -f docker-compose.yml -f docker-compose.local.yml up --build",
+    "start": "docker-compose up --build"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^4.0.1"
+  }
+}

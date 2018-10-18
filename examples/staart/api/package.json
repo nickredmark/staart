@@ -1,0 +1,34 @@
+{
+  "name": "graphql-with-auth",
+  "version": "0.0.0",
+  "description": "This is an example of a protected graphql API, to which the user will need to authenticate using a JWT. This example API needs to be running for these example projects to work:",
+  "main": "index.js",
+  "scripts": {
+    "bootstrap": "npm install && cp -n .env.dist .env",
+    "dev": "node index.js",
+    "start": "wait-for-it -t 30 localhost:27017 && node index.js"
+  },
+  "author": "Nicola Marcacci Rossi <nicolamr@gmail.com> (http://nmr.io)",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server-express": "^2.1.0",
+    "body-parser": "^1.18.2",
+    "connect-redis": "^3.4.0",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "graphql": "^14.0.2",
+    "graphql-tools": "^4.0.2",
+    "mongodb": "^3.1.6",
+    "morgan": "^1.9.0",
+    "node-wait-for-it": "^0.2.0",
+    "nodeify": "^1.0.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=10"
+  }
+}

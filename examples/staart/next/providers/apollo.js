@@ -1,6 +1,10 @@
-import withApollo from 'ooth-client-react-next-apollo'
-import settings from '../public-settings'
+import withApollo from 'ooth-client-react-next-apollo';
+import getConfig from 'next/config';
+
+const {
+  publicRuntimeConfig: { url },
+} = getConfig();
 
 export default withApollo({
-    url: `${settings.url}/graphql`,
-})
+  url: `${url}/api`,
+});

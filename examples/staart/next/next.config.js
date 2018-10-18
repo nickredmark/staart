@@ -1,6 +1,11 @@
 const BabiliPlugin = require('babili-webpack-plugin');
 
 module.exports = {
+  publicRuntimeConfig: {
+    url: process.env.URL,
+    facebookClientId: process.env.FACEBOOK_CLIENT_ID,
+    googleClientId: process.env.GOOGLE_CLIENT_ID,
+  },
   webpack(config, { dev }) {
     // remove Uglify plugin
     config.plugins = config.plugins.filter((plugin) => {

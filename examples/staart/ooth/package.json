@@ -1,0 +1,37 @@
+{
+  "name": "ooth-example",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "bootstrap": "npm install && cp -n .env.dist .env",
+    "dev": "node index.js",
+    "start": "wait-for-it -t 30 localhost:27017 && node index.js"
+  },
+  "author": "Nicola Marcacci Rossi <nicolamr@gmail.com> (http://nmr.io)",
+  "license": "MIT",
+  "dependencies": {
+    "connect-redis": "^3.4.0",
+    "cors": "^2.8.1",
+    "dotenv": "^6.0.0",
+    "express": "^4.14.1",
+    "mailcomposer": "^4.0.1",
+    "mailgun-js": "^0.21.0",
+    "mongodb": "^3.1.6",
+    "morgan": "^1.8.0",
+    "node-wait-for-it": "^0.2.0",
+    "ooth": "^2.5.0",
+    "ooth-facebook": "^2.5.0",
+    "ooth-google": "^2.5.0",
+    "ooth-guest": "^2.5.0",
+    "ooth-jwt": "^2.5.0",
+    "ooth-local": "^2.5.0",
+    "ooth-local-emailer": "^2.5.0",
+    "ooth-mongo": "^2.5.0",
+    "ooth-user": "^2.5.0",
+    "ooth-ws": "^2.5.0"
+  },
+  "engines": {
+    "node": ">=8"
+  }
+}

@@ -1,33 +1,30 @@
-const next = require('next')
-const express = require('express')
-const settings = require('./settings')
-const api = require('./server/api').start
-
-const dev = process.env.NODE_ENV !== 'prod'
+require('dotenv').config();
+const next = require('next');
+const express = require('express');
+const cookieParser = require('cookie-parser');
 
 const start = async () => {
-    try {
-        const app = express()
+  try {
+    const app = express();
+    app.use(cookieParser());
 
-        await api(app, settings)
-        
-        const nextApp = next({
-            dev
-        })
-        const handle = nextApp.getRequestHandler()
+    const nextApp = next({
+      dev: process.env.NODE_ENV !== 'production',
+    });
+    const handle = nextApp.getRequestHandler();
 
-        await nextApp.prepare()
+    await nextApp.prepare();
 
-        app.get('*', (req, res) => {
-            return handle(req, res)
-        })
+    app.get('*', (req, res) => {
+      return handle(req, res);
+    });
 
-        await app.listen(settings.port)
+    await app.listen(process.env.PORT, process.env.HOST);
 
-        console.log(`Online at ${settings.url}:${settings.port}`)
-    } catch (e) {
-        console.error(e)
-    }
-}
+    console.log(`Next online at ${process.env.HOST}:${process.env.PORT}`);
+  } catch (e) {
+    console.error(e);
+  }
+};
 
-start()
+start();

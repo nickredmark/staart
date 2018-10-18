@@ -1,0 +1,14 @@
+version: '3'
+services:
+  db:
+    network_mode: host
+  redis:
+    network_mode: host
+  next:
+    network_mode: host
+  ooth:
+    network_mode: host
+  api:
+    network_mode: host
+  proxy:
+    network_mode: host
