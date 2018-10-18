@@ -1,27 +1,21 @@
 version: '3'
 services:
   db:
-    container_name: db
     image: mongo
     volumes:
       - ./db:/data/db
   redis:
-    container_name: redis
     image: redis
   next:
-    container_name: next
     build: ./next
     env_file: ./next/.env
   ooth:
-    container_name: ooth
     build: ./ooth
     env_file: ./ooth/.env
   api:
-    container_name: api
     build: ./api
     env_file: ./api/.env
   proxy:
-    container_name: proxy
     build: ./proxy
     env_file: ./proxy/.env
     ports:
