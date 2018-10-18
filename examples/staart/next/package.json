@@ -7,7 +7,7 @@
     "bootstrap": "npm install && cp -n .env.dist .env",
     "dev": "node index.js",
     "build": "next build",
-    "start": "wait-for-it -t 30 localhost:3001 && wait-for-it -t 30 localhost:3002 && node index.js"
+    "start": "node index.js"
   },
   "author": "Nicola Marcacci Rossi <nicolamr@gmail.com> (http://nmr.io)",
   "license": "MIT",

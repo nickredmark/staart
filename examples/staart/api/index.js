@@ -51,8 +51,10 @@ function setupAuthEndpoints(app) {
 
 const start = async () => {
   try {
-    const client = await MongoClient.connect(process.env.MONGO_URL);
-    const db = client.db(process.env.MONGO_URL.split('://')[1].split('/')[1]);
+    const client = await MongoClient.connect(
+      `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_HOST}/${process.env.MONGO_DB}`,
+    );
+    const db = client.db(process.env.MONGO_DB);
 
     const Posts = db.collection('posts');
     const Comments = db.collection('comments');
