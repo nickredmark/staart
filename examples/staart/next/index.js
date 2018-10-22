@@ -15,9 +15,7 @@ const start = async () => {
 
     await nextApp.prepare();
 
-    app.get('*', (req, res) => {
-      return handle(req, res);
-    });
+    app.get('*', (req, res) => handle(req, res));
 
     await app.listen(process.env.PORT, process.env.HOST);
 

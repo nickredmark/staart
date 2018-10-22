@@ -4,5 +4,5 @@ ssh me@nmr.io << EOF
   cd Documents/staart/staart/examples/staart
   git merge master
   npm start
-  docker logs -f 
+  docker-compose logs -f 
 EOF

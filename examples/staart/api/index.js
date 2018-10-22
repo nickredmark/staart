@@ -6,7 +6,6 @@ const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const cors = require('cors');
 const passport = require('passport');
-const nodeify = require('nodeify');
 const { ApolloServer } = require('apollo-server-express');
 const connectRedis = require('connect-redis');
 
@@ -16,37 +15,6 @@ const prepare = (o) => {
   }
   return o;
 };
-
-function nodeifyAsync(asyncFunction) {
-  return function(...args) {
-    return nodeify(asyncFunction(...args.slice(0, -1)), args[args.length - 1]);
-  };
-}
-
-function setupAuthEndpoints(app) {
-  app.use(cookieParser());
-  const RedisStore = connectRedis(session);
-  app.use(
-    session({
-      name: 'app-session-id',
-      store: new RedisStore({
-        host: process.env.REDIS_HOST,
-        port: process.env.REDIS_PORT,
-      }),
-      secret: process.env.SESSION_SECRET,
-      resave: false,
-      saveUninitialized: true,
-    }),
-  );
-  app.use(passport.initialize());
-  app.use(passport.session());
-  passport.serializeUser((userId, done) => {
-    done(null, userId);
-  });
-  passport.deserializeUser((userId, done) => {
-    done(null, userId);
-  });
-}
 
 const start = async () => {
   try {
@@ -108,25 +76,15 @@ const start = async () => {
             _id: userId,
           };
         },
-        post: async (root, { _id }) => {
-          return prepare(await Posts.findOne(ObjectId(_id)));
-        },
-        posts: async (root, args, context) => {
-          return (await Posts.find({}).toArray()).map(prepare);
-        },
-        comment: async (root, { _id }) => {
-          return prepare(await Comments.findOne(ObjectId(_id)));
-        },
+        post: async (root, { _id }) => prepare(await Posts.findOne(ObjectId(_id))),
+        posts: async (root, args, context) => (await Posts.find({}).toArray()).map(prepare),
+        comment: async (root, { _id }) => prepare(await Comments.findOne(ObjectId(_id))),
       },
       Post: {
-        comments: async ({ _id }) => {
-          return (await Comments.find({ postId: _id }).toArray()).map(prepare);
-        },
+        comments: async ({ _id }) => (await Comments.find({ postId: _id }).toArray()).map(prepare),
       },
       Comment: {
-        post: async ({ postId }) => {
-          return prepare(await Posts.findOne(ObjectId(postId)));
-        },
+        post: async ({ postId }) => prepare(await Posts.findOne(ObjectId(postId))),
       },
       Mutation: {
         createPost: async (root, args, { userId }, info) => {
@@ -159,7 +117,28 @@ const start = async () => {
     app.use(corsMiddleware);
     app.options(corsMiddleware);
 
-    setupAuthEndpoints(app);
+    app.use(cookieParser());
+    const RedisStore = connectRedis(session);
+    app.use(
+      session({
+        name: 'app-session-id',
+        store: new RedisStore({
+          host: process.env.REDIS_HOST,
+          port: process.env.REDIS_PORT,
+        }),
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: true,
+      }),
+    );
+    app.use(passport.initialize());
+    app.use(passport.session());
+    passport.serializeUser((userId, done) => {
+      done(null, userId);
+    });
+    passport.deserializeUser((userId, done) => {
+      done(null, userId);
+    });
 
     const server = new ApolloServer({
       typeDefs,
