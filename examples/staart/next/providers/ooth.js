@@ -6,8 +6,9 @@ const {
   publicRuntimeConfig: { url },
 } = getConfig();
 
-const oothClient = new OothClient({
-  url: `${url}/auth`,
-});
-
-export default withOothNext(oothClient);
+export default withOothNext(
+  () =>
+    new OothClient({
+      url: `${url}/auth`,
+    }),
+);
