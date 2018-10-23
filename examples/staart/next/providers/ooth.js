@@ -4,11 +4,12 @@ import getConfig from 'next/config';
 
 const {
   publicRuntimeConfig: { url },
+  serverRuntimeConfig,
 } = getConfig();
 
 export default withOothNext(
   () =>
     new OothClient({
-      url: `${url}/auth`,
+      url: `${(serverRuntimeConfig && serverRuntimeConfig.url) || url}/auth`,
     }),
 );

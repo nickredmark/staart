@@ -8,15 +8,15 @@ services:
     image: redis
   next:
     build: ./next
-    env_file: ./next/.env
+    env_file: ./next/.env.docker
   ooth:
     build: ./ooth
-    env_file: ./ooth/.env
+    env_file: ./ooth/.env.docker
   api:
     build: ./api
-    env_file: ./api/.env
+    env_file: ./api/.env.docker
   proxy:
     build: ./proxy
-    env_file: ./proxy/.env
+    env_file: ./proxy/.env.docker
     ports:
       - '$PORT:8080'

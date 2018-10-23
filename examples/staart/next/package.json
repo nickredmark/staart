@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "bootstrap": "npm install && cp -n .env.dist .env",
+    "bootstrap": "npm install && cp -n .env.dist .env && cp -n .env.docker.dist .env.docker",
     "dev": "node index.js",
     "build": "next build",
     "start": "node index.js"

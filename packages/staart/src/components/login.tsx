@@ -22,15 +22,17 @@ const LoginComponent = ({ __, facebookClientId, googleClientId }: Props) => (
   >
     <h1>{__('login-component.login')}</h1>
     <Local />
-    <p
-      style={{
-        textAlign: 'center',
-      }}
-    >
-      {__('login-component.or')}
-    </p>
-    <Facebook clientId={facebookClientId} />
-    <Google clientId={googleClientId} />
+    {(facebookClientId || googleClientId) && (
+      <p
+        style={{
+          textAlign: 'center',
+        }}
+      >
+        {__('login-component.or')}
+      </p>
+    )}
+    {facebookClientId && <Facebook clientId={facebookClientId} />}
+    {googleClientId && <Google clientId={googleClientId} />}
     <p>
       {__('login-component.new-user')} <a href="/register">{__('login-component.register')}</a>.
     </p>

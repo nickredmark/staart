@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "bootstrap": "npm install && cp -n .env.dist .env",
+    "bootstrap": "npm install && cp -n .env.dist .env && cp -n .env.docker.dist .env.docker",
     "dev": "node index.js",
     "start": "wait-for-it -t 30 $MONGO_HOST:$MONGO_PORT && wait-for-it -t 30 $REDIS_HOST:$REDIS_PORT && node index.js"
   },
