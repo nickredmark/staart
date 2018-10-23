@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "bootstrap": "npm install && cp -n .env.dist .env",
+    "bootstrap": "npm install && cp -n .env.dist .env && cp -n .env.docker.dist .env.docker",
+    "dev": "node .",
     "start": "node ."
   },
   "license": "MIT",
