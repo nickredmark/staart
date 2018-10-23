@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "bootstrap": "npm install && cp -n .env.dist .env && (cd api && npm run bootstrap) && (cd next && npm run bootstrap) && (cd ooth && npm run bootstrap) && (cd proxy && npm run bootstrap)",
-    "start:dev-environment": "docker-compose -f docker-compose.yml -f docker-compose.local.yml up --build db redis proxy",
-    "start:dev": "concurrently \"cd api && npm run dev\" \"cd next && npm run dev\" \"cd ooth && npm run dev\"",
+    "start:dev-environment": "docker-compose -f docker-compose.yml -f docker-compose.local.yml up --build db redis",
+    "start:dev": "concurrently \"cd api && npm run dev\" \"cd next && npm run dev\" \"cd ooth && npm run dev\" \"cd proxy && npm run dev\"",
     "start:local": "docker-compose -f docker-compose.yml -f docker-compose.local.yml up --build",
     "start": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build"
   },
