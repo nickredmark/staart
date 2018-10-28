@@ -26,6 +26,7 @@ type Props = {
   footerMessage: string;
   Head: any;
   Link: any;
+  fluid?: boolean;
 };
 
 type ExtendedUser = User & {
@@ -62,6 +63,7 @@ const StatelessLayout = ({
   footerMessage,
   Head,
   Link,
+  fluid,
 }: Props) => (
   <div>
     <Head>
@@ -76,7 +78,7 @@ const StatelessLayout = ({
       }}
     >
       <nav className="navbar navbar-inverse navbar-fixed-top">
-        <div className="container">
+        <div className={fluid ? 'container-fluid' : 'container'}>
           <div className="navbar-header">
             <button
               type="button"

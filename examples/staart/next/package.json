@@ -7,7 +7,7 @@
     "bootstrap": "npm install && cp -n .env.dist .env",
     "dev": "node index.js",
     "build": "next build",
-    "start": "node index.js"
+    "start": "node ."
   },
   "author": "Nicola Marcacci Rossi <nicolamr@gmail.com> (http://nmr.io)",
   "license": "MIT",

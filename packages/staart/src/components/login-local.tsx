@@ -61,6 +61,7 @@ class LoginFormComponent extends React.Component<Props, State> {
             type="string"
             className="form-control"
             id="username"
+            name="username"
             placeholder="Username"
             ref={(username) => {
               this.username = username!;
@@ -73,6 +74,7 @@ class LoginFormComponent extends React.Component<Props, State> {
             type="password"
             className="form-control"
             id="password"
+            name="password"
             placeholder="******"
             ref={(password) => {
               this.password = password!;

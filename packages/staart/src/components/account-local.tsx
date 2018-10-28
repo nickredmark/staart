@@ -141,6 +141,7 @@ type UsernameFormComponentProps = {
   __: __;
   user: ExtendedUser;
   oothClient: OothClient;
+  onSet?: () => void;
 };
 
 type UsernameFormComponentState = {
@@ -157,7 +158,7 @@ class UsernameFormComponent extends React.Component<UsernameFormComponentProps, 
   }
 
   public render(): JSX.Element {
-    const { __, user } = this.props;
+    const { __, user, onSet } = this.props;
     const username = user.local && user.local.username;
     return (
       <div>
@@ -176,6 +177,9 @@ class UsernameFormComponent extends React.Component<UsernameFormComponentProps, 
                   message,
                   state: 'success',
                 });
+                if (onSet) {
+                  onSet();
+                }
               })
               .catch(({ message }) => {
                 this.setState({
@@ -186,7 +190,7 @@ class UsernameFormComponent extends React.Component<UsernameFormComponentProps, 
           }}
           state={this.state.state}
           message={this.state.message}
-          submitLabel={__('account-local.username.username')}
+          submitLabel={__('account-local.username.set-username') || __('account-local.username.username')}
         >
           <div className="form-group">
             <label htmlFor="username">{__('account-local.username.username')}</label>
@@ -206,7 +210,7 @@ class UsernameFormComponent extends React.Component<UsernameFormComponentProps, 
     );
   }
 }
-const Username = compose<UsernameFormComponentProps, {}>(
+export const Username = compose<UsernameFormComponentProps, {}>(
   withOoth,
   withUser,
   withI18n,

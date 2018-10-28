@@ -1,0 +1,14 @@
+version: '3'
+services:
+  db:
+    restart: always
+  redis:
+    restart: always
+  next:
+    restart: always
+  ooth:
+    restart: always
+  api:
+    restart: always
+  proxy:
+    restart: always

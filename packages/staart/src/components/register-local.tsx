@@ -65,6 +65,7 @@ class RegisterFormComponent extends React.Component<Props, State> {
             type="email"
             className="form-control"
             id="email"
+            name="email"
             placeholder="Email"
             ref={(email) => {
               this.email = email!;
@@ -77,6 +78,7 @@ class RegisterFormComponent extends React.Component<Props, State> {
             type="password"
             className="form-control"
             id="password"
+            name="password"
             placeholder="******"
             ref={(password) => {
               this.password = password!;

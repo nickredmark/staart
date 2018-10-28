@@ -25,7 +25,8 @@
       "email-verification": "Email verification"
     },
     "username": {
-      "username": "Username"
+      "username": "Username",
+      "set-username": "Set Username"
     },
     "password": {
       "passwords-dont-match": "Passwords don't match.",
