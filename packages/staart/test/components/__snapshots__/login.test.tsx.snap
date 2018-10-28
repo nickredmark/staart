@@ -26,6 +26,7 @@ exports[`<Login /> renders 1`] = `
       <input
         className="form-control"
         id="username"
+        name="username"
         placeholder="Username"
         type="string"
       />
@@ -41,6 +42,7 @@ exports[`<Login /> renders 1`] = `
       <input
         className="form-control"
         id="password"
+        name="password"
         placeholder="******"
         type="password"
       />
