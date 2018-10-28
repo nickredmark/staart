@@ -22,11 +22,11 @@ type Props = {
   setToggled: (toggled: boolean) => void;
   siteName: string;
   menu: MenuItem[];
-  userMenu: MenuItem[];
+  userMenu: MenuItem[] | ((user: any) => MenuItem[]);
+  loggedMenu?: MenuItem[] | ((user: any) => MenuItem[]);
   footerMessage: string;
   Head: any;
   Link: any;
-  fluid?: boolean;
 };
 
 type ExtendedUser = User & {
@@ -59,11 +59,11 @@ const StatelessLayout = ({
   setToggled,
   siteName,
   menu,
+  loggedMenu,
   userMenu,
   footerMessage,
   Head,
   Link,
-  fluid,
 }: Props) => (
   <div>
     <Head>
@@ -78,7 +78,7 @@ const StatelessLayout = ({
       }}
     >
       <nav className="navbar navbar-inverse navbar-fixed-top">
-        <div className={fluid ? 'container-fluid' : 'container'}>
+        <div className="container">
           <div className="navbar-header">
             <button
               type="button"
@@ -101,34 +101,40 @@ const StatelessLayout = ({
             </a>
           </div>
           <div id="navbar" className={'collapse navbar-collapse' + (toggled ? ' in' : '')}>
-            <ul className="nav navbar-nav navbar-right">
-              {menu.map(({ url, name, label }) => (
-                <li key={name} className={page === name ? 'active' : undefined}>
-                  <Link href={url}>
-                    <a>{label}</a>
-                  </Link>
-                </li>
-              ))}
-              {!user && (
+            {user ? (
+              <ul className="nav navbar-nav navbar-right">
+                {(typeof loggedMenu === 'function' ? loggedMenu(user) : loggedMenu || menu).map(({ url, name, label }) => (
+                  <li key={name} className={page === name ? 'active' : undefined}>
+                    <Link href={url}>
+                      <a>{label}</a>
+                    </Link>
+                  </li>
+                ))}
+                <Dropdown page={page} userMenu={typeof userMenu === 'function' ? userMenu(user) : userMenu}>
+                  Hello, {getUsername(user)}
+                </Dropdown>
+              </ul>
+            ) : (
+              <ul className="nav navbar-nav navbar-right">
+                {menu.map(({ url, name, label }) => (
+                  <li key={name} className={page === name ? 'active' : undefined}>
+                    <Link href={url}>
+                      <a>{label}</a>
+                    </Link>
+                  </li>
+                ))}
                 <li className={page === 'login' ? 'active' : undefined}>
                   <Link href="/login">
                     <a>Log in</a>
                   </Link>
                 </li>
-              )}
-              {!user && (
                 <li className={page === 'register' ? 'active' : undefined}>
                   <Link href="/register">
                     <a>Register</a>
                   </Link>
                 </li>
-              )}
-              {user && (
-                <Dropdown page={page} userMenu={userMenu}>
-                  Hello, {getUsername(user)}
-                </Dropdown>
-              )}
-            </ul>
+              </ul>
+            )}
           </div>
         </div>
       </nav>
