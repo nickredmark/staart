@@ -14,16 +14,16 @@
   "dependencies": {
     "compose-next": "^2.6.0",
     "cookie-parser": "^1.4.3",
-    "cors": "^2.8.3",
+    "cors": "^2.8.5",
     "dotenv": "^6.1.0",
     "express": "^4.16.2",
     "graphql": "^14.0.2",
     "graphql-server-express": "^1.2.0",
     "graphql-tag": "^2.5.0",
-    "graphql-tools": "^4.0.2",
+    "graphql-tools": "^4.0.3",
     "mailcomposer": "^4.0.2",
     "mailgun-js": "^0.21.0",
-    "mongodb": "^3.1.8",
+    "mongodb": "^3.1.10",
     "morgan": "^1.9.0",
     "next": "^7.0.2",
     "node-wait-for-it": "^0.2.0",
@@ -31,20 +31,20 @@
     "ooth-client": "^2.6.0",
     "ooth-client-react": "^2.6.0",
     "ooth-client-react-next": "^2.6.0",
-    "ooth-client-react-next-apollo": "^2.6.0",
+    "ooth-client-react-next-apollo": "^2.8.0",
     "ooth-facebook": "^2.6.0",
     "ooth-google": "^2.6.0",
     "ooth-local": "^2.6.0",
     "ooth-local-emailer": "^2.6.0",
     "ooth-mongo": "^2.6.0",
     "ooth-user": "^2.6.0",
-    "react": "^16.1.1",
-    "react-apollo": "^2.0.1",
-    "react-dom": "^16.1.1",
-    "staart": "^4.0.0"
+    "react": "^16.6.3",
+    "react-apollo": "^2.3.1",
+    "react-dom": "^16.6.3",
+    "staart": "^4.3.0"
   },
   "devDependencies": {
     "babili-webpack-plugin": "^0.1.2",
-    "nodemon": "^1.18.6"
+    "nodemon": "^1.18.7"
   }
 }
