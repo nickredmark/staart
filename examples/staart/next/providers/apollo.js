@@ -3,8 +3,9 @@ import getConfig from 'next/config';
 
 const {
   publicRuntimeConfig: { url },
+  serverRuntimeConfig,
 } = getConfig();
 
 export default withApollo({
-  url: `${url}/api`,
+  url: `${(serverRuntimeConfig && serverRuntimeConfig.url) || url}/api`,
 });

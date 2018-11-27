@@ -1,14 +1,17 @@
 version: '3'
 services:
   db:
-    network_mode: host
+    ports:
+      - '27017:27017'
   redis:
-    network_mode: host
+    ports:
+      - '6379:6379'
   next:
-    network_mode: host
+    ports:
+      - '3000:3000'
   ooth:
-    network_mode: host
+    ports:
+      - '3001:3001'
   api:
-    network_mode: host
-  proxy:
-    network_mode: host
+    ports:
+      - '3002:3002'

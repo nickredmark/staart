@@ -51,7 +51,7 @@ async function start() {
     });
     oothUser({ ooth });
     oothLocal({ ooth });
-    if (process.env.MAIL_ACTIVE) {
+    if (process.env.MAIL_FROM) {
       emailer({
         ooth,
         from: process.env.MAIL_FROM,
