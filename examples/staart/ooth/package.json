@@ -28,6 +28,7 @@
     "ooth-local": "^2.6.0",
     "ooth-local-emailer": "^2.6.0",
     "ooth-mongo": "^2.6.0",
+    "ooth-twitter": "^2.8.0",
     "ooth-user": "^2.6.0",
     "ooth-ws": "^2.6.0"
   },
