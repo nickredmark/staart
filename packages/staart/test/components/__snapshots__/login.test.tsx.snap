@@ -18,7 +18,7 @@ exports[`<Login /> renders 1`] = `
     <label>
       <input
         checked={false}
-        name="nodejs"
+        name="remember"
         onChange={[Function]}
         type="checkbox"
       />
