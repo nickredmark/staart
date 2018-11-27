@@ -6,14 +6,16 @@ import withRedirectUser from '../hocs/redirect-user';
 import Facebook from './login-facebook';
 import Google from './login-google';
 import Local from './login-local';
+import Twitter from './login-twitter';
 
 type Props = {
   __: __;
-  facebookClientId: string;
-  googleClientId: string;
+  facebookClientId?: string;
+  googleClientId?: string;
+  twitterClientId?: string;
 };
 
-const LoginComponent = ({ __, facebookClientId, googleClientId }: Props) => (
+const LoginComponent = ({ __, facebookClientId, googleClientId, twitterClientId }: Props) => (
   <div
     style={{
       maxWidth: '300px',
@@ -22,15 +24,18 @@ const LoginComponent = ({ __, facebookClientId, googleClientId }: Props) => (
   >
     <h1>{__('login-component.login')}</h1>
     <Local />
-    <p
-      style={{
-        textAlign: 'center',
-      }}
-    >
-      {__('login-component.or')}
-    </p>
-    <Facebook clientId={facebookClientId} />
-    <Google clientId={googleClientId} />
+    {(facebookClientId || googleClientId || twitterClientId) && (
+      <p
+        style={{
+          textAlign: 'center',
+        }}
+      >
+        {__('login-component.or')}
+      </p>
+    )}
+    {facebookClientId && <Facebook clientId={facebookClientId} />}
+    {googleClientId && <Google clientId={googleClientId} />}
+    {twitterClientId && <Twitter clientId={twitterClientId} />}
     <p>
       {__('login-component.new-user')} <a href="/register">{__('login-component.register')}</a>.
     </p>

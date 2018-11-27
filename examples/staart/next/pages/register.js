@@ -4,13 +4,18 @@ import Register from 'staart/lib/components/register';
 import getConfig from 'next/config';
 
 const {
-  publicRuntimeConfig: { facebookClientId, googleClientId },
+  publicRuntimeConfig: { facebookClientId, googleClientId, twitterClientId },
 } = getConfig();
 
 export default withPage(({ url: { query: { next } } }) => {
   return (
     <Layout title="Register" page="register">
-      <Register next={next} facebookClientId={facebookClientId} googleClientId={googleClientId} />
+      <Register
+        next={next}
+        facebookClientId={facebookClientId}
+        googleClientId={googleClientId}
+        twitterClientId={twitterClientId}
+      />
     </Layout>
   );
 });

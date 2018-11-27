@@ -6,6 +6,7 @@ const oothLocal = require('ooth-local').default;
 const oothUser = require('ooth-user').default;
 const oothFacebook = require('ooth-facebook').default;
 const oothGoogle = require('ooth-google').default;
+const oothTwitter = require('ooth-twitter').default;
 const emailer = require('ooth-local-emailer').default;
 const morgan = require('morgan');
 const cors = require('cors');
@@ -62,16 +63,28 @@ async function start() {
         }),
       });
     }
-    oothFacebook({
-      ooth,
-      clientID: process.env.FACEBOOK_CLIENT_ID,
-      clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    });
-    oothGoogle({
-      ooth,
-      clientID: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    });
+    if (process.env.FACEBOOK_CLIENT_ID) {
+      oothFacebook({
+        ooth,
+        clientID: process.env.FACEBOOK_CLIENT_ID,
+        clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+      });
+    }
+    if (process.env.GOOGLE_CLIENT_ID) {
+      oothGoogle({
+        ooth,
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      });
+    }
+    if (process.env.TWITTER_CLIENT_ID) {
+      oothTwitter({
+        ooth,
+        clientID: process.env.TWITTER_CLIENT_ID,
+        clientSecret: process.env.TWITTER_CLIENT_SECRET,
+        callbackUrl: process.env.TWITTER_CALLBACK_URL,
+      });
+    }
 
     app.listen(process.env.PORT, process.env.HOST, function() {
       console.info(`Ooth online at ${process.env.HOST}:${process.env.PORT}/auth`);

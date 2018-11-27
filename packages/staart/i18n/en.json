@@ -13,6 +13,13 @@
     "no-google-login-set": "No Google login set.",
     "connect-google": "Connect Google"
   },
+  "account-twitter": {
+    "twitter": "Twitter",
+    "connected-with-twitter": "Connected with Twitter.",
+    "twitter-email": "Twitter email",
+    "no-twitter-login-set": "No Twitter login set.",
+    "connect-twitter": "Connect Twitter"
+  },
   "account-local": {
     "email": {
       "change-email": "Change email",
@@ -57,6 +64,10 @@
   "login-google": {
     "login-with-google": "Log in with Google",
     "register-with-google": "Register with Google"
+  },
+  "login-twitter": {
+    "login-with-twitter": "Log in with Twitter",
+    "register-with-twitter": "Register with Twitter"
   },
   "login-local": {
     "username-or-email": "Username or Email",

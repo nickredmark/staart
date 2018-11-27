@@ -5,6 +5,7 @@ module.exports = {
     url: process.env.URL,
     facebookClientId: process.env.FACEBOOK_CLIENT_ID,
     googleClientId: process.env.GOOGLE_CLIENT_ID,
+    twitterClientId: process.env.TWITTER_CLIENT_ID,
   },
   webpack(config, { dev }) {
     // remove Uglify plugin

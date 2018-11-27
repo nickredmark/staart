@@ -5,14 +5,16 @@ import { compose } from 'recompose';
 import Local from './account-local';
 import Facebook from './account-facebook';
 import Google from './account-google';
+import Twitter from './account-twitter';
 
 type Props = {
   __: __;
-  facebookClientId: string;
-  googleClientId: string;
+  facebookClientId?: string;
+  googleClientId?: string;
+  twitterClientId?: string;
 };
 
-const AccountComponent = ({ __, facebookClientId, googleClientId }: Props) => (
+const AccountComponent = ({ __, facebookClientId, googleClientId, twitterClientId }: Props) => (
   <div
     style={{
       maxWidth: '300px',
@@ -22,11 +24,12 @@ const AccountComponent = ({ __, facebookClientId, googleClientId }: Props) => (
     <h1>{__('account.account')}</h1>
     <h2>{__('account-local.username.username')}</h2>
     <Local />
-    <Facebook clientId={facebookClientId} />
-    <Google clientId={googleClientId} />
+    {facebookClientId && <Facebook clientId={facebookClientId} />}
+    {googleClientId && <Google clientId={googleClientId} />}
+    {twitterClientId && <Twitter clientId={twitterClientId} />}
   </div>
 );
-const Account = compose<Props, { facebookClientId: string; googleClientId: string }>(
+const Account = compose<Props, { facebookClientId?: string; googleClientId?: string; twitterClientId?: string }>(
   withLoginRequired('/account'),
   withI18n,
 )(AccountComponent);
