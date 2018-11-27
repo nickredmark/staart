@@ -12,6 +12,19 @@ exports[`<Login /> renders 1`] = `
   <h1>
     login-component.login
   </h1>
+  <div
+    className="checkbox"
+  >
+    <label>
+      <input
+        checked={false}
+        name="nodejs"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      login-component.remember
+    </label>
+  </div>
   <form
     onSubmit={[Function]}
   >
