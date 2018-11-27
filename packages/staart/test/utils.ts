@@ -6,4 +6,4 @@ const oothClient = new OothClient({
   secondaryAuthMode: 'session',
 });
 
-export const provideOothNext = withOothNext(oothClient);
+export const provideOothNext = withOothNext(() => oothClient);

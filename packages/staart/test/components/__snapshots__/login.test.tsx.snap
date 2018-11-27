@@ -63,15 +63,6 @@ exports[`<Login /> renders 1`] = `
       </button>
     </div>
   </form>
-  <p
-    style={
-      Object {
-        "textAlign": "center",
-      }
-    }
-  >
-    login-component.or
-  </p>
   <p>
     login-component.new-user
      
