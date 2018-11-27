@@ -12,30 +12,30 @@
   "license": "MIT",
   "dependencies": {
     "connect-redis": "^3.4.0",
-    "cors": "^2.8.1",
+    "cors": "^2.8.5",
     "dotenv": "^6.0.0",
     "express": "^4.14.1",
     "mailcomposer": "^4.0.1",
     "mailgun-js": "^0.21.0",
-    "mongodb": "^3.1.6",
+    "mongodb": "^3.1.10",
     "morgan": "^1.8.0",
     "node-wait-for-it": "^0.2.0",
-    "ooth": "^2.6.0",
-    "ooth-facebook": "^2.6.0",
-    "ooth-google": "^2.6.0",
-    "ooth-guest": "^2.6.0",
-    "ooth-jwt": "^2.6.0",
-    "ooth-local": "^2.6.0",
-    "ooth-local-emailer": "^2.6.0",
+    "ooth": "^2.9.0",
+    "ooth-facebook": "^2.9.0",
+    "ooth-google": "^2.9.0",
+    "ooth-guest": "^2.9.0",
+    "ooth-jwt": "^2.9.0",
+    "ooth-local": "^2.9.0",
+    "ooth-local-emailer": "^2.9.0",
     "ooth-mongo": "^2.6.0",
-    "ooth-twitter": "^2.8.0",
-    "ooth-user": "^2.6.0",
-    "ooth-ws": "^2.6.0"
+    "ooth-twitter": "^2.9.0",
+    "ooth-user": "^2.9.0",
+    "ooth-ws": "^2.9.0"
   },
   "engines": {
     "node": ">=8"
   },
   "devDependencies": {
-    "nodemon": "^1.18.6"
+    "nodemon": "^1.18.7"
   }
 }
