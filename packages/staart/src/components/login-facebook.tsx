@@ -9,6 +9,7 @@ type Props = {
   oothClient: OothClient;
   label?: string;
   __: __;
+  remember?: boolean;
 };
 
 type Response = {
@@ -61,6 +62,7 @@ class FacebookComponent extends React.Component<Props, State> {
                 this.props.oothClient
                   .authenticate('facebook', 'login', {
                     access_token: response.authResponse.accessToken,
+                    remember: this.props.remember,
                   })
                   .catch((e) => {
                     this.setState({
@@ -93,7 +95,7 @@ class FacebookComponent extends React.Component<Props, State> {
     );
   }
 }
-const Facebook = compose<Props, { clientId: string; label?: string }>(
+const Facebook = compose<Props, Pick<Props, 'clientId' | 'label' | 'remember'>>(
   withOoth,
   withI18n,
 )(FacebookComponent);

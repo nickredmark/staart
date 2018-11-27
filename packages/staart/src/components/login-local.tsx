@@ -8,6 +8,7 @@ import { OothClient } from 'ooth-client';
 type Props = {
   oothClient: OothClient;
   __: __;
+  remember?: boolean;
 };
 
 type State = {
@@ -32,11 +33,13 @@ class LoginFormComponent extends React.Component<Props, State> {
           e.preventDefault();
           const username = this.username!.value;
           const password = this.password!.value;
+          const remember = this.props.remember;
 
           this.props.oothClient
             .authenticate('local', 'login', {
               username,
               password,
+              remember,
             })
             .then(() => {
               this.setState({
@@ -86,7 +89,7 @@ class LoginFormComponent extends React.Component<Props, State> {
     );
   }
 }
-const LoginForm = compose<Props, {}>(
+const LoginForm = compose<Props, Pick<Props, 'remember'>>(
   withOoth,
   withI18n,
 )(LoginFormComponent);

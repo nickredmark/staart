@@ -78,6 +78,7 @@
   },
   "login-component": {
     "login": "Log in",
+    "remember": "Remember me",
     "or": "or",
     "new-user": "New user?",
     "register": "Register"

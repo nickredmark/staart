@@ -9,6 +9,7 @@ type Props = {
   oothClient: OothClient;
   label?: string;
   __: __;
+  remember?: boolean;
 };
 
 type State = {
@@ -94,6 +95,7 @@ class GoogleComponent extends React.Component<Props, State> {
                   return this.props.oothClient
                     .authenticate('google', 'login', {
                       id_token: res.getAuthResponse().id_token,
+                      remember: this.props.remember,
                     })
                     .catch((e) => {
                       this.setState({
@@ -129,7 +131,7 @@ class GoogleComponent extends React.Component<Props, State> {
     );
   }
 }
-const Google = compose<Props, { clientId: string; label?: string }>(
+const Google = compose<Props, Pick<Props, 'clientId' | 'label' | 'remember'>>(
   withOoth,
   withI18n,
 )(GoogleComponent);

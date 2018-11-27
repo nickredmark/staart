@@ -9,6 +9,7 @@ type Props = {
   oothClient: OothClient;
   label?: string;
   __: __;
+  remember?: boolean;
 };
 
 type State = {
@@ -45,7 +46,7 @@ class TwitterComponent extends React.Component<Props, State> {
                 state: 'success',
                 message: 'Logging you in...',
               });
-              await this.props.oothClient.authenticate('twitter', 'login', data);
+              await this.props.oothClient.authenticate('twitter', 'login', { ...data, remember: this.props.remember });
               this.setState({
                 state: 'success',
                 message: 'Logged in successfully.',
@@ -81,7 +82,7 @@ class TwitterComponent extends React.Component<Props, State> {
     );
   }
 }
-const Twitter = compose<Props, { clientId: string; label?: string }>(
+const Twitter = compose<Props, Pick<Props, 'clientId' | 'label' | 'remember'>>(
   withOoth,
   withI18n,
 )(TwitterComponent);
