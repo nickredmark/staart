@@ -25,9 +25,9 @@ const LoginComponent = ({ __, facebookClientId, googleClientId, twitterClientId,
     }}
   >
     <h1>{__('login-component.login')}</h1>
-    <div key={name} className="checkbox">
+    <div className="checkbox">
       <label>
-        <input name={name} type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} />
+        <input name="remember" type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} />
         {__('login-component.remember')}
       </label>
     </div>
