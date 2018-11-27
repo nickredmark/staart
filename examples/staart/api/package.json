@@ -4,7 +4,7 @@
   "description": "This is an example of a protected graphql API, to which the user will need to authenticate using a JWT. This example API needs to be running for these example projects to work:",
   "main": "index.js",
   "scripts": {
-    "bootstrap": "npm install && cp -n .env.dist .env",
+    "bootstrap": "npm install && (cp -n .env.dist .env || true) && (cp -n .env.docker.dist .env.docker || true)",
     "dev": "node index.js",
     "start": "wait-for-it -t 30 $MONGO_HOST:$MONGO_PORT && wait-for-it -t 30 $REDIS_HOST:$REDIS_PORT && node index.js"
   },

@@ -10,7 +10,21 @@ npm run bootstrap
 
 ## Config
 
-Configurations can be found in .env files in the various microservice folders.
+Configure the following files:
+
+```
+api/.env
+api/.env.docker
+next/.env
+next/.env.docker
+ooth/.env
+ooth/.env.docker
+proxy/.env
+proxy/.env.docker
+```
+
+`.env.docker` files are used when the app is run in a docker environment. The main difference is that
+the services can't link to each other using localhost.
 
 ## Start Local
 
