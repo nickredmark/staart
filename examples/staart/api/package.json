@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "bootstrap": "npm install && (cp -n .env.dist .env || true) && (cp -n .env.docker.dist .env.docker || true)",
-    "dev": "node index.js",
+    "dev": "nodemon .",
     "start": "wait-for-it -t 30 $MONGO_HOST:$MONGO_PORT && wait-for-it -t 30 $REDIS_HOST:$REDIS_PORT && node index.js"
   },
   "author": "Nicola Marcacci Rossi <nicolamr@gmail.com> (http://nmr.io)",
@@ -30,5 +30,8 @@
   },
   "engines": {
     "node": ">=10"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.6"
   }
 }

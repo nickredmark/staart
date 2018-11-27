@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "bootstrap": "npm install && (cp -n .env.dist .env || true) && (cp -n .env.docker.dist .env.docker || true)",
-    "dev": "node index.js",
+    "dev": "nodemon .",
     "build": "next build",
     "start": "node ."
   },
@@ -44,6 +44,7 @@
     "staart": "^4.0.0"
   },
   "devDependencies": {
-    "babili-webpack-plugin": "^0.1.2"
+    "babili-webpack-plugin": "^0.1.2",
+    "nodemon": "^1.18.6"
   }
 }

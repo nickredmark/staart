@@ -38,13 +38,13 @@ Access your app under `http://localhost:8080`
 
 ## Develop
 
-While developing you won't be running everything in docker, only certain services (`db`, `redis`, `proxy`):
+While developing you won't be running everything in docker, only certain services (`db`, `redis`):
 
 ```
 npm run start:dev-environment
 ```
 
-Then start `next`, `ooth` and `api` locally in watchmode.
+Then start `next`, `ooth`, `api`, `proxy` locally in watchmode.
 
 ```
 npm run start:dev

@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "bootstrap": "npm install && cp -n .env.dist .env && cp -n .env.docker.dist .env.docker",
-    "dev": "node .",
+    "dev": "nodemon .",
     "start": "node ."
   },
   "license": "MIT",
@@ -12,5 +12,8 @@
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
     "express-http-proxy": "^1.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.6"
   }
 }
