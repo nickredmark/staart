@@ -51,3 +51,11 @@ npm run start:dev
 ```
 
 Access your app under `http://localhost:8080`
+
+## Remote server
+
+On remote server only fill the root `.env` and the various `.env.docker` files then start with
+
+```
+npm run start
+```
