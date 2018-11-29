@@ -41,7 +41,7 @@
     "react": "^16.6.3",
     "react-apollo": "^2.3.1",
     "react-dom": "^16.6.3",
-    "staart": "^4.4.1"
+    "staart": "^4.4.2"
   },
   "devDependencies": {
     "babili-webpack-plugin": "^0.1.2",
