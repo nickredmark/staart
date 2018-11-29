@@ -16,6 +16,7 @@ type State = {
   state?: 'error' | 'success';
   message?: string;
   show?: boolean;
+  token?: Response;
 };
 
 type Response = {
@@ -30,17 +31,28 @@ class TwitterComponent extends React.Component<Props, State> {
     this.state = {};
   }
 
+  async componentDidMount() {
+    const token = await this.props.oothClient.method<Response>('twitter', 'reverse');
+    this.setState({
+      token,
+      show: true,
+    });
+  }
+
   public render(): JSX.Element | null {
+    if (!this.state.show) {
+      return null;
+    }
+
     return (
       <div className="form-group">
         <button
           onClick={async () => {
             try {
-              const token = await this.props.oothClient.method<Response>('twitter', 'reverse');
               const promise = new Promise<{ oauth_token: string; oauth_verifier: string }>((res) => {
                 (window as any).loginTwitterRes = res;
               });
-              window.open(`https://api.twitter.com/oauth/authenticate?oauth_token=${token.oauth_token}`);
+              window.open(`https://api.twitter.com/oauth/authenticate?oauth_token=${this.state.token!.oauth_token}`);
               const data = await promise;
               this.setState({
                 state: 'success',
