@@ -31,7 +31,7 @@ class TwitterComponent extends React.Component<Props, State> {
     this.state = {};
   }
 
-  async componentDidMount() {
+  public async componentDidMount(): Promise<void> {
     const token = await this.props.oothClient.method<Response>('twitter', 'reverse');
     this.setState({
       token,
