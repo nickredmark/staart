@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "bootstrap": "npm install && cp -n .env.dist .env && cp -n .env.docker.dist .env.docker",
+    "bootstrap": "npm install && (cp -n .env.dist .env || true ) && (cp -n .env.docker.dist .env.docker || true)",
     "dev": "nodemon .",
     "start": "node ."
   },
