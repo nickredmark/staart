@@ -13,29 +13,29 @@
   "dependencies": {
     "connect-redis": "^3.4.0",
     "cors": "^2.8.5",
-    "dotenv": "^6.0.0",
+    "dotenv": "^6.2.0",
     "express": "^4.14.1",
-    "mailcomposer": "^4.0.1",
-    "mailgun-js": "^0.21.0",
+    "mailcomposer": "^4.0.2",
+    "mailgun-js": "^0.22.0",
     "mongodb": "^3.1.10",
-    "morgan": "^1.8.0",
+    "morgan": "^1.9.1",
     "node-wait-for-it": "^0.2.0",
-    "ooth": "^2.9.0",
-    "ooth-facebook": "^2.9.0",
-    "ooth-google": "^2.9.0",
-    "ooth-guest": "^2.9.0",
-    "ooth-jwt": "^2.9.0",
-    "ooth-local": "^2.9.0",
-    "ooth-local-emailer": "^2.9.0",
-    "ooth-mongo": "^2.6.0",
-    "ooth-twitter": "^2.9.0",
-    "ooth-user": "^2.9.0",
-    "ooth-ws": "^2.9.0"
+    "ooth": "^2.12.0",
+    "ooth-facebook": "^2.12.0",
+    "ooth-google": "^2.12.0",
+    "ooth-guest": "^2.12.0",
+    "ooth-jwt": "^2.12.0",
+    "ooth-local": "^2.12.0",
+    "ooth-local-emailer": "^2.12.0",
+    "ooth-mongo": "^2.12.0",
+    "ooth-twitter": "^2.12.0",
+    "ooth-user": "^2.12.0",
+    "ooth-ws": "^2.12.0"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   },
   "devDependencies": {
-    "nodemon": "^1.18.7"
+    "nodemon": "^1.18.9"
   }
 }
