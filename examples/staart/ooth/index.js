@@ -29,6 +29,7 @@ async function start() {
 
     const client = await MongoClient.connect(
       `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DB}`,
+      { useNewUrlParser: true },
     );
     const db = client.db(process.env.MONGO_DB);
 

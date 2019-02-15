@@ -20,6 +20,7 @@ const start = async () => {
   try {
     const client = await MongoClient.connect(
       `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DB}`,
+      { useNewUrlParser: true },
     );
     const db = client.db(process.env.MONGO_DB);
 
@@ -109,13 +110,13 @@ const start = async () => {
     const app = express();
     app.use(morgan('dev'));
 
-    const corsMiddleware = cors({
+    const corsMiddleware = {
       origin: process.env.ORIGIN_URL,
       credentials: true,
       preflightContinue: false,
-    });
-    app.use(corsMiddleware);
-    app.options(corsMiddleware);
+    };
+    app.use(cors(corsMiddleware));
+    app.options(cors(corsMiddleware));
 
     app.use(cookieParser());
     const RedisStore = connectRedis(session);
@@ -156,6 +157,7 @@ const start = async () => {
     server.applyMiddleware({
       app,
       path: '/api',
+      cors: corsMiddleware,
     });
 
     app.listen(process.env.PORT, () => {
