@@ -2,6 +2,7 @@
   "name": "staart-boilerplate",
   "version": "1.0.0",
   "scripts": {
+    "clean": "rm -rf node_modules api/node_modules api/package-lock.json next/node_modules next/.next next/package-lock.json ooth/node_modules ooth/package-lock.json proxy/node_modules proxy/package-lock.json ",
     "bootstrap": "npm install && (cp -n .env.dist .env || true) && (cd api && npm run bootstrap) && (cd next && npm run bootstrap) && (cd ooth && npm run bootstrap) && (cd proxy && npm run bootstrap)",
     "start:dev-environment": "docker-compose -f docker-compose.yml -f docker-compose.local.yml up --build db redis",
     "start:dev": "concurrently -n \"api,next,ooth,proxy\" \"cd api && npm run dev\" \"cd next && npm run dev\" \"cd ooth && npm run dev\" \"cd proxy && npm run dev\"",
