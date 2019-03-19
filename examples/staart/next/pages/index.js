@@ -21,9 +21,9 @@ export default withPage(() => {
               <p><a className="btn btn-default" href="/register" role="button">Test the register function &raquo;</a></p>
             </div>
             <div className="col-md-4">
-              <h2>Support on Patreon</h2>
-              <p>This is an open source library. Support it on Patreon.</p>
-              <p><a className="btn btn-default" href="https://www.patreon.com/nmaro" role="button">Patreon &raquo;</a></p>
+              <h2>Open Source</h2>
+              <p>This is an open source library.</p>
+              <p><a className="btn btn-default" href="https://github.com/nmaro/staart" role="button">GitHub &raquo;</a></p>
             </div>
           </div>
         </div>
