@@ -21,7 +21,3 @@ Check out a live example here: [staart.nmr.io](http://staart.nmr.io). Featuring:
 ## Ooth
 
 Staart's sister project is [Ooth](https://github.com/nmaro/ooth), a user accounts library for node (that you can use independently of staart).
-
-## Support
-
-Support the development of this project on [Patreon](https://www.patreon.com/nmaro).
