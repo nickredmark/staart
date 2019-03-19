@@ -47,10 +47,7 @@ export default (props) => (
     footerMessage={
       <p>
         Brought to you with ❤ by <a href="/about">Nick Redmark</a>. Find the code on{' '}
-        <a href="https://github.com/nmaro/staart">Github</a>. Support and discuss the development of this library on{' '}
-        <a href="https://www.patreon.com/nmaro" target="_blank">
-          Patreon
-        </a>
+        <a href="https://github.com/nmaro/staart">Github</a>.
       </p>
     }
     {...props}
